@@ -1,4 +1,7 @@
 import thunk from "redux-thunk";
 import { applyMiddleware } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
 
-export default applyMiddleware(thunk);
+const middlewares = [thunk];
+
+export default composeWithDevTools(applyMiddleware(...middlewares));
