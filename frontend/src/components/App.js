@@ -1,5 +1,5 @@
 import React from "react";
-import List from "./components/Post/List";
+import List from "./Post/List";
 
 const title = "Mock";
 const posts = [
