@@ -2,52 +2,47 @@ import { get, post, put, remove } from "./protocol";
 
 const api = "http://localhost:3001";
 
-// get all categories
+// Categories
 export const getCategories = () =>
   get(`${api}/categories`)
     .then(res => res.json())
     .then(data => data.categories);
 
-// get all posts
+// Posts
 export const getPosts = () => get(`${api}/posts`).then(res => res.json());
 
-// get all posts from category
 export const getCategoryPosts = category =>
   get(`${api}/${category}/posts`).then(res => res.json());
 
-// get a post
 export const getPost = id => get(`${api}/posts/${id}`).then(res => res.json());
 
-// add a post
 export const addPost = payload =>
   post(`${api}/posts`, payload).then(res => res.json());
 
-// update a post
-// PUT /posts/:id
+export const updatePost = (id, { title, body }) =>
+  put(`${api}/posts/${id}`, { title, body }).then(res => res.json());
 
-// vote a post
-// POST /posts/:id
+export const votePost = (id, option) =>
+  post(`${api}/posts/${id}`, { option }).then(res => res.json());
 
-// delete a post
-// DELETE /posts/:id
+export const removePost = id =>
+  remove(`${api}/posts/${id}`).then(res => res.json());
 
-// get all Comments from Post
+// Comments
 export const getComments = post =>
   get(`${api}/posts/${post}/comments`).then(res => res.json());
 
-// add a comment
+export const getComment = id =>
+  get(`${api}/comments/${id}`).then(res => res.json());
+
 export const addComment = payload =>
   post(`${api}/comments`, payload).then(res => res.json());
 
-// get a comment
-export const getComment = id =>
-  fetch(`${api}/comments/${id}`).then(res => res.json());
+export const voteComment = (id, option) =>
+  post(`${api}/comments/${id}`, { option }).then(res => res.json());
 
-// vote a comment
-// POST /comments/:id
+export const updateComment = (id, { timestamp, body }) =>
+  put(`${api}/comments/${id}`, { timestamp, body }).then(res => res.json());
 
-// update a comment
-// PUT /comments/:id
-
-// delete a comment
-// DELETE /comments/:id
+export const removeComment = id =>
+  remove(`${api}/comments/${id}`).then(res => res.json());
