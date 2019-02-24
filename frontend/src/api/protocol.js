@@ -19,7 +19,7 @@ export const post = (url, payload) =>
       ...headers,
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({ payload })
+    body: JSON.stringify(payload)
   });
 
 export const put = (url, payload) =>
@@ -29,7 +29,7 @@ export const put = (url, payload) =>
       ...headers,
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({ payload })
+    body: JSON.stringify(payload)
   });
 
 export const remove = url =>
