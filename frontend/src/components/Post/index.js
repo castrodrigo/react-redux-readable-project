@@ -1,6 +1,6 @@
 import React from "react";
 
-const Post = ({ title, timestamp, author, body }) => (
+const Post = ({ post: { title, timestamp, author, body } }) => (
   <div>
     <h2>{title}</h2>
     <span>{timestamp}</span>

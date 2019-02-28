@@ -1,5 +1,5 @@
 import React from "react";
-import Post from "./";
+import Post from "../../containers/Post";
 
 const List = ({ title, postIds }) => (
   <div>
