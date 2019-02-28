@@ -1,13 +1,13 @@
 import React from "react";
-import Post from "./Post";
+import Post from "../../containers/Post";
 
-const List = ({ title, posts }) => (
+const List = ({ title, postIds }) => (
   <div>
     <h2>{title}</h2>
     <ul>
-      {posts.map(post => (
-        <li key={post.id}>
-          <Post {...post} />
+      {postIds.map(id => (
+        <li key={id}>
+          <Post id={id} />
         </li>
       ))}
     </ul>
