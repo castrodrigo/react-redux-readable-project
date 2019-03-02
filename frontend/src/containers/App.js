@@ -18,8 +18,7 @@ class App extends React.Component {
           {this.props.loading ? null : (
             <React.Fragment>
               <Route path="/" exact component={Home} />
-              {/* <Route path="/:categpry/:id" component={Post} /> */}
-              <Route path="/:id" component={PostPage} />
+              <Route path="/:category/:id" component={PostPage} />
             </React.Fragment>
           )}
         </React.Fragment>
