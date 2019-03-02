@@ -7,7 +7,10 @@ export default (state = {}, action) => {
       action.comments.map(comment => (commentsObject[comment.id] = comment));
       return {
         ...state,
-        ...commentsObject
+        [action.postId]: {
+          ...state[action.postId],
+          ...commentsObject
+        }
       };
     default:
       return state;

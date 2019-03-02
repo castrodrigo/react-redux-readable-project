@@ -4,7 +4,8 @@ export const UPDATE_COMMENT = "UPDATE_COMMENT";
 export const VOTE_COMMENT = "VOTE_COMMENT";
 export const REMOVE_COMMENT = "REMOVE_COMMENT";
 
-export const getComments = comments => ({
+export const getComments = (comments, postId) => ({
   type: GET_COMMENTS,
+  postId,
   comments
 });
