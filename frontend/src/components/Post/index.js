@@ -1,12 +1,26 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const Post = ({ post: { title, timestamp, author, body } }) => (
-  <div>
+const Post = ({
+  post: {
+    id,
+    title,
+    timestamp,
+    author,
+    body,
+    category,
+    commentCount,
+    voteScore
+  }
+}) => (
+  <Link to={`/${category}/${id}`}>
     <h2>{title}</h2>
-    <span>{timestamp}</span>
-    <span>{author}</span>
+    <span>{category}</span> | <span>{timestamp}</span> | <span>{author}</span>
     <div>{body}</div>
-  </div>
+    <section>
+      ({commentCount}) comments | score: {voteScore}
+    </section>
+  </Link>
 );
 
 export default Post;
