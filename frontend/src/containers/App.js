@@ -4,6 +4,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { LoadingBar } from "react-redux-loading";
 import { handleInitialData } from "../actions/shared";
 import Home from "./Home";
+import PostPage from "./PostPage";
 
 class App extends React.Component {
   componentDidMount() {
@@ -17,6 +18,7 @@ class App extends React.Component {
           {this.props.loading ? null : (
             <React.Fragment>
               <Route path="/" exact component={Home} />
+              <Route path="/:category/:id" component={PostPage} />
             </React.Fragment>
           )}
         </React.Fragment>
