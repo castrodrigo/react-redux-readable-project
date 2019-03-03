@@ -1,10 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import * as api from "../api";
-import { getComments } from "../actions/comments";
-import PostPage from "../components/Post/Page";
+import * as api from "../../api";
+import { getComments } from "../../actions/comments";
+import PostPage from "../../components/Post/Page";
 
-class PostPageContainer extends React.Component {
+class PageContainer extends React.Component {
   componentDidMount() {
     api
       .getComments(this.props.postId)
@@ -37,4 +37,4 @@ const mapStateToProps = ({ comments }, props) => {
   };
 };
 
-export default connect(mapStateToProps)(PostPageContainer);
+export default connect(mapStateToProps)(PageContainer);

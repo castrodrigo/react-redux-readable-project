@@ -4,7 +4,8 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { LoadingBar } from "react-redux-loading";
 import { handleInitialData } from "../actions/shared";
 import Home from "./Home";
-import PostPage from "./PostPage";
+import PostPage from "./Post/Page";
+import PostNew from "./Post/New";
 
 class App extends React.Component {
   componentDidMount() {
@@ -19,6 +20,7 @@ class App extends React.Component {
             <React.Fragment>
               <Route path="/" exact component={Home} />
               <Route path="/:category/:id" component={PostPage} />
+              <Route path="/new" component={PostNew} />
             </React.Fragment>
           )}
         </React.Fragment>

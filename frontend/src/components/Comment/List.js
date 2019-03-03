@@ -1,5 +1,10 @@
 import React from "react";
+import styled from "styled-components";
 import Comment from "../../containers/Comment";
+
+const ListItem = styled.li`
+  margin-bottom: 0.75em;
+`;
 
 const List = ({ title, commentIds, postId }) => (
   <div>
@@ -7,9 +12,9 @@ const List = ({ title, commentIds, postId }) => (
     <ul>
       {commentIds &&
         commentIds.map(id => (
-          <li key={id}>
+          <ListItem key={id}>
             <Comment id={id} postId={postId} />
-          </li>
+          </ListItem>
         ))}
     </ul>
   </div>
