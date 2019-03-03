@@ -8,8 +8,9 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-areas:
     "header header header header header header"
-    ". main main main right ."
-    "footer  footer footer footer footer footer";
+    "${props =>
+      props.sidebar ? ". main main main right ." : ". main main main main ."}"
+    "footer footer footer footer footer footer";
   grid-template-columns: 2em 1fr 1fr 1fr 1fr 2em;
 `;
 
@@ -26,13 +27,13 @@ const Content = styled.section`
   grid-area: main;
   padding: 0 0.75em 0.75em 0;
   min-height: calc(100vh - 126px);
+  padding-top: 1em;
 `;
 
 const SidebarWrapper = styled.section`
   grid-area: right;
   background: #840032;
-  padding: 0 0.75em 0.75em;
-  color: #ffffff;
+  padding: 1em 0.75em 0.75em;
 `;
 
 const FooterWrapper = styled.section`
@@ -42,14 +43,16 @@ const FooterWrapper = styled.section`
 `;
 
 const Layout = ({ content, sidebar }) => (
-  <Wrapper>
+  <Wrapper sidebar={!!sidebar}>
     <HeaderWrapper>
       <Header />
     </HeaderWrapper>
     <Content>{content}</Content>
-    <SidebarWrapper>
-      <Sidebar>{sidebar}</Sidebar>
-    </SidebarWrapper>
+    {sidebar && (
+      <SidebarWrapper>
+        <Sidebar>{sidebar}</Sidebar>
+      </SidebarWrapper>
+    )}
     <FooterWrapper>
       <Footer />
     </FooterWrapper>
