@@ -3,7 +3,7 @@ import Category from "../../containers/Category";
 
 const List = ({ title, categories }) => (
   <div>
-    <h2>{title}</h2>
+    <h3>{title}</h3>
     <ul>
       {categories.map(path => (
         <li key={path}>
