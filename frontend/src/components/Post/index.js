@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { FaComments } from "react-icons/fa";
 import { formatTimestamp } from "../../util/date";
 
@@ -18,11 +18,14 @@ const DetailSection = styled.section`
   font-size: 0.75em;
   color: #8e8b8c;
   > span,
-  > a {
+  > button {
     font-weight: bold;
   }
-  > a {
+  > button {
     color: #001936;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
   }
 `;
 
@@ -38,6 +41,11 @@ const CommentSection = styled.section`
   justify-content: space-between;
 `;
 
+const redirectToCategory = (e, category, props) => {
+  e.preventDefault();
+  props.history.push(`/${category}`);
+};
+
 const Post = ({
   post: {
     id,
@@ -48,14 +56,18 @@ const Post = ({
     category,
     commentCount,
     voteScore
-  }
+  },
+  ...props
 }) => (
   <Link to={`/${category}/${id}`}>
     <PostWrapper>
       <Title>{title}</Title>
       <DetailSection>
         Published in <span>{formatTimestamp(timestamp)}</span> by{" "}
-        <span>{author}</span>, in <Link to={`/${category}`}>{category}</Link>
+        <span>{author}</span>, in{" "}
+        <button onClick={e => redirectToCategory(e, category, props)}>
+          {category}
+        </button>
       </DetailSection>
       <ContentWrapper>{body}</ContentWrapper>
       <CommentSection>
@@ -68,4 +80,4 @@ const Post = ({
   </Link>
 );
 
-export default Post;
+export default withRouter(Post);
