@@ -11,7 +11,6 @@ const Wrapper = styled.div`
     ". main main main right ."
     "footer  footer footer footer footer footer";
   grid-template-columns: 2em 1fr 1fr 1fr 1fr 2em;
-  font-family: Roboto;
 `;
 
 const HeaderWrapper = styled.section`
@@ -25,7 +24,7 @@ const HeaderWrapper = styled.section`
 
 const Content = styled.section`
   grid-area: main;
-  padding: 0 0.5em 0.5em 0;
+  padding: 0 0.75em 0.75em 0;
   min-height: calc(100vh - 126px);
 `;
 
