@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { BrowserRouter, Route } from "react-router-dom";
 import { LoadingBar } from "react-redux-loading";
 import { handleInitialData } from "../actions/shared";
-import Home from "./Home";
+import Dashboard from "./Dashboard";
 import PostPage from "./Post/Page";
 import PostNew from "./Post/New";
 
@@ -18,7 +18,8 @@ class App extends React.Component {
           <LoadingBar />
           {this.props.loading ? null : (
             <React.Fragment>
-              <Route path="/" exact component={Home} />
+              <Route path="/" exact component={Dashboard} />
+              <Route path="/:category" exact component={Dashboard} />
               <Route path="/:category/:id" component={PostPage} />
               <Route path="/new" component={PostNew} />
             </React.Fragment>
