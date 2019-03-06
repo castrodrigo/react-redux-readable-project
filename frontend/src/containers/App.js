@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { BrowserRouter, Route } from "react-router-dom";
-import { LoadingBar } from "react-redux-loading";
+import { Switch, BrowserRouter, Route } from "react-router-dom";
 import { handleInitialData } from "../actions/shared";
 import Dashboard from "./Dashboard";
 import PostPage from "./Post/Page";
@@ -14,17 +13,12 @@ class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <React.Fragment>
-          <LoadingBar />
-          {this.props.loading ? null : (
-            <React.Fragment>
-              <Route path="/" exact component={Dashboard} />
-              <Route path="/:category" exact component={Dashboard} />
-              <Route path="/:category/:id" component={PostPage} />
-              <Route path="/new" component={PostNew} />
-            </React.Fragment>
-          )}
-        </React.Fragment>
+        <Switch>
+          <Route path="/" exact component={Dashboard} />
+          <Route path="/new" component={PostNew} />
+          <Route path="/:category" exact component={Dashboard} />
+          <Route path="/:category/:id" component={PostPage} />
+        </Switch>
       </BrowserRouter>
     );
   }
