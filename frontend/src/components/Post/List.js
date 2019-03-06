@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import Post from "../../containers/Post/Post";
 
@@ -18,5 +19,10 @@ const List = ({ title, postIds }) => (
     </ul>
   </div>
 );
+
+List.propTypes = {
+  title: PropTypes.string.isRequired,
+  postIds: PropTypes.array.isRequired
+};
 
 export default List;

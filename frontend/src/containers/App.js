@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import LoadingBar from "react-redux-loading";
 import { Switch, BrowserRouter, Route } from "react-router-dom";
 import { handleInitialData } from "../actions/shared";
 import Dashboard from "./Dashboard";
@@ -11,7 +12,9 @@ class App extends React.Component {
     this.props.dispatch(handleInitialData());
   }
   render() {
-    return (
+    return this.props.loading ? (
+      <LoadingBar />
+    ) : (
       <BrowserRouter>
         <Switch>
           <Route path="/" exact component={Dashboard} />

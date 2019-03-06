@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Category from "../../containers/Category";
 
 const List = ({ title, categories }) => (
@@ -13,5 +14,10 @@ const List = ({ title, categories }) => (
     </ul>
   </div>
 );
+
+List.propTypes = {
+  title: PropTypes.string.isRequired,
+  categories: PropTypes.array.isRequired
+};
 
 export default List;

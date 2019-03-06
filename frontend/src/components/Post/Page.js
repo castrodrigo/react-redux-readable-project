@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Post from "../../containers/Post/Post";
 import CommentList from "../Comment/List";
 import Layout from "../Layout";
@@ -13,5 +14,10 @@ const Page = ({ postId, commentIds }) => (
     }
   />
 );
+
+Page.propTypes = {
+  postId: PropTypes.string.isRequired,
+  commentIds: PropTypes.array
+};
 
 export default Page;
