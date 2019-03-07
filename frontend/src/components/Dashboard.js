@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import List from "./Post/List";
 import Categories from "../containers/Categories";
 import Layout from "./Layout";
@@ -14,5 +15,10 @@ const Dashboard = ({ postIds, category }) => (
     sidebar={<Categories />}
   />
 );
+
+Dashboard.propTypes = {
+  postIds: PropTypes.array.isRequired,
+  category: PropTypes.any
+};
 
 export default Dashboard;

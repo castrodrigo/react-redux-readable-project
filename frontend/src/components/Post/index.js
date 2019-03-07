@@ -1,4 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types";
+
 import styled from "styled-components";
 import { Link, withRouter } from "react-router-dom";
 import { FaComments } from "react-icons/fa";
@@ -79,5 +81,21 @@ const Post = ({
     </PostWrapper>
   </Link>
 );
+
+Post.propTypes = {
+  post: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    timestamp: PropTypes.number.isRequired,
+    author: PropTypes.string.isRequired,
+    body: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+    commentCount: PropTypes.number.isRequired,
+    voteScore: PropTypes.number.isRequired
+  }).isRequired,
+  history: PropTypes.shape({
+    history: PropTypes.shape.isRequired
+  }).isRequired
+};
 
 export default withRouter(Post);

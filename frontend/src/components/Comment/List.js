@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import Comment from "../../containers/Comment";
 
@@ -19,5 +20,11 @@ const List = ({ title, commentIds, postId }) => (
     </ul>
   </div>
 );
+
+List.propTypes = {
+  title: PropTypes.string,
+  commentIds: PropTypes.array.isRequired,
+  postId: PropTypes.string.isRequired
+};
 
 export default List;
