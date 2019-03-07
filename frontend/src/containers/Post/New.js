@@ -1,11 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import { handleAddPost } from "../../actions/posts";
 import PostNew from "../../components/Post/New";
 
 class NewContainer extends React.Component {
   submitPost = post => {
-    this.props.dispatch(handleAddPost(post));
+    this.props
+      .dispatch(handleAddPost(post))
+      .then(() => this.props.history.push(`/${post.category}/`));
   };
 
   render() {
@@ -22,4 +25,4 @@ const mapStateToProps = ({ categories }) => ({
   }))
 });
 
-export default connect(mapStateToProps)(NewContainer);
+export default connect(mapStateToProps)(withRouter(NewContainer));
