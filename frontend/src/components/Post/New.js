@@ -66,8 +66,20 @@ class New extends React.Component {
   state = {
     title: "",
     author: "",
-    category: "",
+    category: null,
     body: ""
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+
+    const {
+      title,
+      author,
+      category: { value },
+      body
+    } = this.state;
+    this.props.onSubmit({ title, author, category: value, body });
   };
 
   handleOnChange = event => {
@@ -83,9 +95,9 @@ class New extends React.Component {
 
   handleValidation = () => {
     const { title, author, category, body } = this.state;
-    return title === "" || author === "" || category === "" || body === ""
-      ? false
-      : true;
+    return title !== "" && author !== "" && body !== "" && category
+      ? true
+      : false;
   };
 
   render() {
@@ -94,7 +106,7 @@ class New extends React.Component {
         content={
           <React.Fragment>
             <h2>Create a new post</h2>
-            <FormContainer onSubmit={this.props.onSubmit}>
+            <FormContainer onSubmit={this.handleSubmit}>
               <Label>
                 Title:
                 <Input

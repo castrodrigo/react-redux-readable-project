@@ -1,3 +1,8 @@
+import { showLoading, hideLoading } from "react-redux-loading";
+import * as api from "../api";
+import { generateUUID } from "../util/id";
+import { generateTimestamp } from "../util/date";
+
 export const GET_POSTS = "GET_POSTS";
 export const ADD_POST = "ADD_POST";
 export const UPDATE_POST = "UPDATE_POST";
@@ -8,3 +13,21 @@ export const getPosts = posts => ({
   type: GET_POSTS,
   posts
 });
+
+const addPost = post => ({
+  type: ADD_POST,
+  post
+});
+
+export const handleAddPost = data => dispatch => {
+  dispatch(showLoading);
+
+  return api
+    .addPost({
+      id: generateUUID(),
+      ...data,
+      timestamp: generateTimestamp()
+    })
+    .then(post => dispatch(addPost(post)))
+    .then(() => dispatch(hideLoading));
+};
