@@ -20,7 +20,7 @@ const addPost = post => ({
 });
 
 export const handleAddPost = data => dispatch => {
-  dispatch(showLoading);
+  dispatch(showLoading());
 
   return api
     .addPost({
@@ -29,5 +29,5 @@ export const handleAddPost = data => dispatch => {
       timestamp: generateTimestamp()
     })
     .then(post => dispatch(addPost(post)))
-    .then(() => dispatch(hideLoading));
+    .then(() => dispatch(hideLoading()));
 };
