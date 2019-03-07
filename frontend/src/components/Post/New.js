@@ -120,10 +120,7 @@ class New extends React.Component {
                 Category:
                 <FormSelect
                   name="category"
-                  options={[
-                    { label: "Test", value: 1 },
-                    { label: "T2est", value: 2 }
-                  ]}
+                  options={this.props.categories}
                   onChange={this.handleOnSelect}
                   searchable={false}
                   value={this.state.category}
@@ -157,7 +154,8 @@ class New extends React.Component {
 }
 
 New.propTypes = {
-  onSubmit: PropTypes.func.isRequired
+  onSubmit: PropTypes.func.isRequired,
+  categories: PropTypes.array.isRequired
 };
 
 export default New;

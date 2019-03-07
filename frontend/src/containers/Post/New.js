@@ -9,12 +9,17 @@ class NewContainer extends React.Component {
   };
 
   render() {
-    return <PostNew onSubmit={this.submitPost} />;
+    return (
+      <PostNew onSubmit={this.submitPost} categories={this.props.categories} />
+    );
   }
 }
 
 const mapStateToProps = ({ categories }) => ({
-  categories
+  categories: Object.keys(categories).map(key => ({
+    value: key,
+    label: categories[key].name
+  }))
 });
 
 export default connect(mapStateToProps)(NewContainer);
