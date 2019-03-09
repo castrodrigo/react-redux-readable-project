@@ -1,0 +1,1045 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`New Post Render should render correctly 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Form
+    categories={
+      Array [
+        Object {
+          "label": "One",
+          "value": 1,
+        },
+        Object {
+          "label": "Two",
+          "value": 1,
+        },
+      ]
+    }
+    onSubmit={[MockFunction]}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "function",
+    "props": Object {
+      "children": Array [
+        <ForwardRef>
+          Title:
+          <ForwardRef
+            name="title"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </ForwardRef>,
+        <ForwardRef>
+          Category:
+          <ForwardRef
+            name="category"
+            onChange={[Function]}
+            options={
+              Array [
+                Object {
+                  "label": "One",
+                  "value": 1,
+                },
+                Object {
+                  "label": "Two",
+                  "value": 1,
+                },
+              ]
+            }
+            searchable={false}
+            value={null}
+          />
+        </ForwardRef>,
+        <ForwardRef>
+          Body:
+          <ForwardRef
+            name="body"
+            onChange={[Function]}
+            rows="10"
+            value=""
+          />
+        </ForwardRef>,
+        <ForwardRef>
+          Author:
+          <ForwardRef
+            name="author"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </ForwardRef>,
+        <ForwardRef
+          disabled={true}
+        >
+          Send
+        </ForwardRef>,
+      ],
+      "onSubmit": [Function],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": Array [
+            "Title:",
+            <ForwardRef
+              name="title"
+              onChange={[Function]}
+              type="text"
+              value=""
+            />,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          "Title:",
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "name": "title",
+              "onChange": [Function],
+              "type": "text",
+              "value": "",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-bwzfXH",
+                "isStatic": true,
+                "rules": Array [
+                  "
+  padding: 0.75em;
+  width: 70%;
+  border: 1px solid #012542;
+  border-radius: 4px;
+  box-sizing: border-box;
+",
+                ],
+              },
+              "displayName": "Input",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-bwzfXH",
+              "target": "input",
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            },
+          },
+        ],
+        "type": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-ifAKCX",
+            "isStatic": true,
+            "rules": Array [
+              "
+  background: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 0.25em 0.5em;
+  align-items: center;
+",
+            ],
+          },
+          "displayName": "styled.label",
+          "foldedComponentIds": Array [],
+          "render": [Function],
+          "styledComponentId": "sc-ifAKCX",
+          "target": "label",
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        },
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": Array [
+            "Category:",
+            <ForwardRef
+              name="category"
+              onChange={[Function]}
+              options={
+                Array [
+                  Object {
+                    "label": "One",
+                    "value": 1,
+                  },
+                  Object {
+                    "label": "Two",
+                    "value": 1,
+                  },
+                ]
+              }
+              searchable={false}
+              value={null}
+            />,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          "Category:",
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "name": "category",
+              "onChange": [Function],
+              "options": Array [
+                Object {
+                  "label": "One",
+                  "value": 1,
+                },
+                Object {
+                  "label": "Two",
+                  "value": 1,
+                },
+              ],
+              "searchable": false,
+              "value": null,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-bxivhb",
+                "isStatic": true,
+                "rules": Array [
+                  "
+  width: 70%;
+  box-sizing: border-box;
+  font-size: 16px;
+  &:focus {
+    outline: none;
+  }
+  & > div,
+  & > div:hover {
+    border-color: #012542;
+  }
+",
+                ],
+              },
+              "displayName": "Select",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-bxivhb",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+              Symbol(Symbol.hasInstance): [Function],
+            },
+          },
+        ],
+        "type": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-ifAKCX",
+            "isStatic": true,
+            "rules": Array [
+              "
+  background: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 0.25em 0.5em;
+  align-items: center;
+",
+            ],
+          },
+          "displayName": "styled.label",
+          "foldedComponentIds": Array [],
+          "render": [Function],
+          "styledComponentId": "sc-ifAKCX",
+          "target": "label",
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        },
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": Array [
+            "Body:",
+            <ForwardRef
+              name="body"
+              onChange={[Function]}
+              rows="10"
+              value=""
+            />,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          "Body:",
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "name": "body",
+              "onChange": [Function],
+              "rows": "10",
+              "value": "",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-htpNat",
+                "isStatic": true,
+                "rules": Array [
+                  "
+  padding: 0.75em;
+  width: 70%;
+  border: 1px solid #012542;
+  border-radius: 4px;
+  box-sizing: border-box;
+",
+                ],
+              },
+              "displayName": "Textarea",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-htpNat",
+              "target": "textarea",
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            },
+          },
+        ],
+        "type": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-ifAKCX",
+            "isStatic": true,
+            "rules": Array [
+              "
+  background: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 0.25em 0.5em;
+  align-items: center;
+",
+            ],
+          },
+          "displayName": "styled.label",
+          "foldedComponentIds": Array [],
+          "render": [Function],
+          "styledComponentId": "sc-ifAKCX",
+          "target": "label",
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        },
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": Array [
+            "Author:",
+            <ForwardRef
+              name="author"
+              onChange={[Function]}
+              type="text"
+              value=""
+            />,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          "Author:",
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "name": "author",
+              "onChange": [Function],
+              "type": "text",
+              "value": "",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-bwzfXH",
+                "isStatic": true,
+                "rules": Array [
+                  "
+  padding: 0.75em;
+  width: 70%;
+  border: 1px solid #012542;
+  border-radius: 4px;
+  box-sizing: border-box;
+",
+                ],
+              },
+              "displayName": "Input",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-bwzfXH",
+              "target": "input",
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            },
+          },
+        ],
+        "type": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-ifAKCX",
+            "isStatic": true,
+            "rules": Array [
+              "
+  background: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 0.25em 0.5em;
+  align-items: center;
+",
+            ],
+          },
+          "displayName": "styled.label",
+          "foldedComponentIds": Array [],
+          "render": [Function],
+          "styledComponentId": "sc-ifAKCX",
+          "target": "label",
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        },
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": "Send",
+          "disabled": true,
+        },
+        "ref": null,
+        "rendered": "Send",
+        "type": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-EHOje",
+            "isStatic": true,
+            "rules": Array [
+              "
+  border: 1px solid #ffffff;
+  border-radius: 4px;
+  color: #fff;
+  background: #840032;
+  padding: 10px;
+  margin-top: 10px;
+  &:disabled {
+    background: #f0f0f0;
+  }
+",
+            ],
+          },
+          "displayName": "Button",
+          "foldedComponentIds": Array [],
+          "render": [Function],
+          "styledComponentId": "sc-EHOje",
+          "target": "button",
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        },
+      },
+    ],
+    "type": Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-bdVaJa",
+        "isStatic": true,
+        "rules": Array [
+          "
+  max-width: 700px;
+  background: #fcf7f9;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+",
+        ],
+      },
+      "displayName": "styled.form",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-bdVaJa",
+      "target": "form",
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    },
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": Array [
+          <ForwardRef>
+            Title:
+            <ForwardRef
+              name="title"
+              onChange={[Function]}
+              type="text"
+              value=""
+            />
+          </ForwardRef>,
+          <ForwardRef>
+            Category:
+            <ForwardRef
+              name="category"
+              onChange={[Function]}
+              options={
+                Array [
+                  Object {
+                    "label": "One",
+                    "value": 1,
+                  },
+                  Object {
+                    "label": "Two",
+                    "value": 1,
+                  },
+                ]
+              }
+              searchable={false}
+              value={null}
+            />
+          </ForwardRef>,
+          <ForwardRef>
+            Body:
+            <ForwardRef
+              name="body"
+              onChange={[Function]}
+              rows="10"
+              value=""
+            />
+          </ForwardRef>,
+          <ForwardRef>
+            Author:
+            <ForwardRef
+              name="author"
+              onChange={[Function]}
+              type="text"
+              value=""
+            />
+          </ForwardRef>,
+          <ForwardRef
+            disabled={true}
+          >
+            Send
+          </ForwardRef>,
+        ],
+        "onSubmit": [Function],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": Array [
+              "Title:",
+              <ForwardRef
+                name="title"
+                onChange={[Function]}
+                type="text"
+                value=""
+              />,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            "Title:",
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "name": "title",
+                "onChange": [Function],
+                "type": "text",
+                "value": "",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [],
+                "componentStyle": ComponentStyle {
+                  "componentId": "sc-bwzfXH",
+                  "isStatic": true,
+                  "rules": Array [
+                    "
+  padding: 0.75em;
+  width: 70%;
+  border: 1px solid #012542;
+  border-radius: 4px;
+  box-sizing: border-box;
+",
+                  ],
+                },
+                "displayName": "Input",
+                "foldedComponentIds": Array [],
+                "render": [Function],
+                "styledComponentId": "sc-bwzfXH",
+                "target": "input",
+                "toString": [Function],
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              },
+            },
+          ],
+          "type": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-ifAKCX",
+              "isStatic": true,
+              "rules": Array [
+                "
+  background: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 0.25em 0.5em;
+  align-items: center;
+",
+              ],
+            },
+            "displayName": "styled.label",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-ifAKCX",
+            "target": "label",
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          },
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": Array [
+              "Category:",
+              <ForwardRef
+                name="category"
+                onChange={[Function]}
+                options={
+                  Array [
+                    Object {
+                      "label": "One",
+                      "value": 1,
+                    },
+                    Object {
+                      "label": "Two",
+                      "value": 1,
+                    },
+                  ]
+                }
+                searchable={false}
+                value={null}
+              />,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            "Category:",
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "name": "category",
+                "onChange": [Function],
+                "options": Array [
+                  Object {
+                    "label": "One",
+                    "value": 1,
+                  },
+                  Object {
+                    "label": "Two",
+                    "value": 1,
+                  },
+                ],
+                "searchable": false,
+                "value": null,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [],
+                "componentStyle": ComponentStyle {
+                  "componentId": "sc-bxivhb",
+                  "isStatic": true,
+                  "rules": Array [
+                    "
+  width: 70%;
+  box-sizing: border-box;
+  font-size: 16px;
+  &:focus {
+    outline: none;
+  }
+  & > div,
+  & > div:hover {
+    border-color: #012542;
+  }
+",
+                  ],
+                },
+                "displayName": "Select",
+                "foldedComponentIds": Array [],
+                "render": [Function],
+                "styledComponentId": "sc-bxivhb",
+                "target": [Function],
+                "toString": [Function],
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+                Symbol(Symbol.hasInstance): [Function],
+              },
+            },
+          ],
+          "type": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-ifAKCX",
+              "isStatic": true,
+              "rules": Array [
+                "
+  background: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 0.25em 0.5em;
+  align-items: center;
+",
+              ],
+            },
+            "displayName": "styled.label",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-ifAKCX",
+            "target": "label",
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          },
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": Array [
+              "Body:",
+              <ForwardRef
+                name="body"
+                onChange={[Function]}
+                rows="10"
+                value=""
+              />,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            "Body:",
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "name": "body",
+                "onChange": [Function],
+                "rows": "10",
+                "value": "",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [],
+                "componentStyle": ComponentStyle {
+                  "componentId": "sc-htpNat",
+                  "isStatic": true,
+                  "rules": Array [
+                    "
+  padding: 0.75em;
+  width: 70%;
+  border: 1px solid #012542;
+  border-radius: 4px;
+  box-sizing: border-box;
+",
+                  ],
+                },
+                "displayName": "Textarea",
+                "foldedComponentIds": Array [],
+                "render": [Function],
+                "styledComponentId": "sc-htpNat",
+                "target": "textarea",
+                "toString": [Function],
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              },
+            },
+          ],
+          "type": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-ifAKCX",
+              "isStatic": true,
+              "rules": Array [
+                "
+  background: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 0.25em 0.5em;
+  align-items: center;
+",
+              ],
+            },
+            "displayName": "styled.label",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-ifAKCX",
+            "target": "label",
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          },
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": Array [
+              "Author:",
+              <ForwardRef
+                name="author"
+                onChange={[Function]}
+                type="text"
+                value=""
+              />,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            "Author:",
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "name": "author",
+                "onChange": [Function],
+                "type": "text",
+                "value": "",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [],
+                "componentStyle": ComponentStyle {
+                  "componentId": "sc-bwzfXH",
+                  "isStatic": true,
+                  "rules": Array [
+                    "
+  padding: 0.75em;
+  width: 70%;
+  border: 1px solid #012542;
+  border-radius: 4px;
+  box-sizing: border-box;
+",
+                  ],
+                },
+                "displayName": "Input",
+                "foldedComponentIds": Array [],
+                "render": [Function],
+                "styledComponentId": "sc-bwzfXH",
+                "target": "input",
+                "toString": [Function],
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              },
+            },
+          ],
+          "type": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-ifAKCX",
+              "isStatic": true,
+              "rules": Array [
+                "
+  background: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 0.25em 0.5em;
+  align-items: center;
+",
+              ],
+            },
+            "displayName": "styled.label",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-ifAKCX",
+            "target": "label",
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          },
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": "Send",
+            "disabled": true,
+          },
+          "ref": null,
+          "rendered": "Send",
+          "type": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-EHOje",
+              "isStatic": true,
+              "rules": Array [
+                "
+  border: 1px solid #ffffff;
+  border-radius: 4px;
+  color: #fff;
+  background: #840032;
+  padding: 10px;
+  margin-top: 10px;
+  &:disabled {
+    background: #f0f0f0;
+  }
+",
+              ],
+            },
+            "displayName": "Button",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-EHOje",
+            "target": "button",
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          },
+        },
+      ],
+      "type": Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "attrs": Array [],
+        "componentStyle": ComponentStyle {
+          "componentId": "sc-bdVaJa",
+          "isStatic": true,
+          "rules": Array [
+            "
+  max-width: 700px;
+  background: #fcf7f9;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+",
+          ],
+        },
+        "displayName": "styled.form",
+        "foldedComponentIds": Array [],
+        "render": [Function],
+        "styledComponentId": "sc-bdVaJa",
+        "target": "form",
+        "toString": [Function],
+        "warnTooManyClasses": [Function],
+        "withComponent": [Function],
+      },
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    "disableLifecycleMethods": true,
+  },
+}
+`;
