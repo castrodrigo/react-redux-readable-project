@@ -2,15 +2,19 @@ import React from "react";
 import PropTypes from "prop-types";
 import List from "./Post/List";
 import Categories from "../containers/Categories";
+import OrderBy from "./OrderBy";
 import Layout from "./Layout";
 
-const Dashboard = ({ postIds, category }) => (
+const Dashboard = ({ postIds, category, orderBy, setOrder }) => (
   <Layout
     content={
-      <List
-        title={category ? `All Posts from ${category}` : "All Posts"}
-        postIds={postIds}
-      />
+      <React.Fragment>
+        <OrderBy orderBy={orderBy} onSelect={setOrder} />
+        <List
+          title={category ? `All Posts from ${category}` : "All Posts"}
+          postIds={postIds}
+        />
+      </React.Fragment>
     }
     sidebar={<Categories />}
   />
@@ -18,7 +22,13 @@ const Dashboard = ({ postIds, category }) => (
 
 Dashboard.propTypes = {
   postIds: PropTypes.array.isRequired,
-  category: PropTypes.any
+  category: PropTypes.any,
+  orderBy: PropTypes.string.isRequired,
+  setOrder: PropTypes.func.isRequired
+};
+
+Dashboard.defaultProps = {
+  orderBy: "timestamp"
 };
 
 export default Dashboard;
