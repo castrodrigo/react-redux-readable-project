@@ -1,19 +1,44 @@
 import { connect } from "react-redux";
-import Home from "../components/Dashboard";
+import { setOrderBy } from "../actions/dashboard";
+import Dashboard from "../components/Dashboard";
 
-const mapStateToProps = ({ posts }, props) => {
+const sortPosts = (postIds, posts, order) => {
+  let orderBy = order || "timestamp";
+  return postIds.sort((a, b) => posts[b][orderBy] - posts[a][orderBy]);
+};
+
+const mapStateToProps = ({ posts, dashboard }, props) => {
   const category = props.match.params.category || null;
   const filteredPosts = category
     ? Object.values(posts)
         .filter(post => post.category === category)
         .map(post => post.id)
     : Object.keys(posts);
+
   return {
-    postIds: filteredPosts.sort(
-      (a, b) => posts[b].timestamp - posts[a].timestamp
-    ),
-    category
+    postIds: filteredPosts,
+    posts,
+    category,
+    dashboard
   };
 };
 
-export default connect(mapStateToProps)(Home);
+const mapDispatchToProps = dispatch => ({
+  setOrder: order => dispatch(setOrderBy(order))
+});
+
+const mergeProps = (propsFromState, { setOrder }) => ({
+  postIds: sortPosts(
+    propsFromState.postIds,
+    propsFromState.posts,
+    propsFromState.dashboard
+  ),
+  setOrder,
+  orderBy: propsFromState.dashboard
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+  mergeProps
+)(Dashboard);

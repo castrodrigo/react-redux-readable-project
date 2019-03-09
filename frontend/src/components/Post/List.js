@@ -3,13 +3,17 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import Post from "../../containers/Post/Post";
 
+const Title = styled.h3`
+  display: inline;
+`;
+
 const ListItem = styled.li`
   margin-bottom: 0.75em;
 `;
 
 const List = ({ title, postIds }) => (
   <div>
-    <h3>{title}</h3>
+    <Title>{title}</Title>
     <ul>
       {postIds.map(id => (
         <ListItem key={id}>
