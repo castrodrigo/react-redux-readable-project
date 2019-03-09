@@ -1,14 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
+import styled from "styled-components";
+
+const OrderByWrapper = styled.div`
+  font-size: 14px;
+  float: right;
+  & > select {
+    margin-left: 8px;
+  }
+`;
 
 const OrderBy = ({ onSelect, orderBy }) => (
-  <div>
+  <OrderByWrapper>
     Order by:
     <select onChange={e => onSelect(e.target.value)} defaultValue={orderBy}>
       <option value="timestamp">Date</option>
       <option value="voteScore">Score</option>
     </select>
-  </div>
+  </OrderByWrapper>
 );
 
 OrderBy.propTypes = {
