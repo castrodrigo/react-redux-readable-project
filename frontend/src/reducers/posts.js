@@ -1,5 +1,6 @@
 import {
   GET_POSTS,
+  GET_POST,
   ADD_POST,
   UPDATE_POST,
   VOTE_POST,
@@ -16,6 +17,7 @@ export default (state = {}, action) => {
         ...state,
         ...postsObject
       };
+    case GET_POST:
     case ADD_POST:
     case UPDATE_POST:
     case VOTE_POST:

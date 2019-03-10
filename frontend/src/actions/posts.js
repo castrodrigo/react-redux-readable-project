@@ -4,6 +4,7 @@ import { generateUUID } from "../util/id";
 import { generateTimestamp } from "../util/date";
 
 export const GET_POSTS = "GET_POSTS";
+export const GET_POST = "GET_POST";
 export const ADD_POST = "ADD_POST";
 export const UPDATE_POST = "UPDATE_POST";
 export const VOTE_POST = "VOTE_POST";
@@ -16,6 +17,20 @@ export const getPosts = posts => ({
   type: GET_POSTS,
   posts
 });
+
+export const getPost = post => ({
+  type: GET_POST,
+  post
+});
+
+export const handleGetPost = id => dispatch => {
+  dispatch(showLoading());
+
+  return api
+    .getPost(id)
+    .then(post => dispatch(getPost(post)))
+    .then(() => dispatch(hideLoading()));
+};
 
 const addPost = post => ({
   type: ADD_POST,
