@@ -34,7 +34,8 @@ const mergeProps = (propsFromState, { setOrder }) => ({
     propsFromState.dashboard
   ),
   setOrder,
-  orderBy: propsFromState.dashboard
+  orderBy: propsFromState.dashboard,
+  category: propsFromState.category
 });
 
 export default connect(

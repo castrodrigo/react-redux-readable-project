@@ -27,7 +27,7 @@ const HeaderWrapper = styled.section`
 const Content = styled.section`
   grid-area: main;
   padding: 0 0.75em 0.75em 0;
-  min-height: calc(100vh - 126px);
+  min-height: calc(100vh - 146px);
   padding-top: 1em;
 `;
 

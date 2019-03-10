@@ -11,7 +11,7 @@ const Dashboard = ({ postIds, category, orderBy, setOrder }) => (
       <React.Fragment>
         <OrderBy orderBy={orderBy} onSelect={setOrder} />
         <List
-          title={category ? `All Posts from ${category}` : "All Posts"}
+          title={category ? `All Posts from "${category}"` : "All Posts"}
           postIds={postIds}
         />
       </React.Fragment>
