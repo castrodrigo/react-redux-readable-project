@@ -65,3 +65,17 @@ export const handleVotePost = (id, vote) => dispatch => {
     .then(post => dispatch(votePost(post)))
     .then(() => dispatch(hideLoading()));
 };
+
+const removePost = id => ({
+  type: REMOVE_POST,
+  id
+});
+
+export const handleRemovePost = id => dispatch => {
+  dispatch(showLoading());
+
+  return api
+    .removePost(id)
+    .then(() => dispatch(removePost(id)))
+    .then(() => dispatch(hideLoading()));
+};
