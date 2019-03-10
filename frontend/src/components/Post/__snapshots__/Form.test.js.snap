@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`New Post Render should render correctly 1`] = `
+exports[`Form Render should render correctly 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Form
@@ -116,6 +116,7 @@ ShallowWrapper {
             "props": Object {
               "name": "title",
               "onChange": [Function],
+              "readOnly": undefined,
               "type": "text",
               "value": "",
             },
@@ -134,6 +135,10 @@ ShallowWrapper {
   border: 1px solid #012542;
   border-radius: 4px;
   box-sizing: border-box;
+  &:read-only {
+    background: #f6f6f6;
+    color: #999999;
+  }
 ",
                 ],
               },
@@ -210,6 +215,7 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "function",
             "props": Object {
+              "isDisabled": undefined,
               "name": "category",
               "onChange": [Function],
               "options": Array [
@@ -237,7 +243,7 @@ ShallowWrapper {
                   "
   width: 70%;
   box-sizing: border-box;
-  font-size: 16px;
+  font-size: 12px;
   &:focus {
     outline: none;
   }
@@ -312,6 +318,7 @@ ShallowWrapper {
             "props": Object {
               "name": "body",
               "onChange": [Function],
+              "readOnly": undefined,
               "rows": "10",
               "value": "",
             },
@@ -396,6 +403,7 @@ ShallowWrapper {
             "props": Object {
               "name": "author",
               "onChange": [Function],
+              "readOnly": undefined,
               "type": "text",
               "value": "",
             },
@@ -414,6 +422,10 @@ ShallowWrapper {
   border: 1px solid #012542;
   border-radius: 4px;
   box-sizing: border-box;
+  &:read-only {
+    background: #f6f6f6;
+    color: #999999;
+  }
 ",
                 ],
               },
@@ -612,6 +624,7 @@ ShallowWrapper {
               "props": Object {
                 "name": "title",
                 "onChange": [Function],
+                "readOnly": undefined,
                 "type": "text",
                 "value": "",
               },
@@ -630,6 +643,10 @@ ShallowWrapper {
   border: 1px solid #012542;
   border-radius: 4px;
   box-sizing: border-box;
+  &:read-only {
+    background: #f6f6f6;
+    color: #999999;
+  }
 ",
                   ],
                 },
@@ -706,6 +723,7 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "function",
               "props": Object {
+                "isDisabled": undefined,
                 "name": "category",
                 "onChange": [Function],
                 "options": Array [
@@ -733,7 +751,7 @@ ShallowWrapper {
                     "
   width: 70%;
   box-sizing: border-box;
-  font-size: 16px;
+  font-size: 12px;
   &:focus {
     outline: none;
   }
@@ -808,6 +826,7 @@ ShallowWrapper {
               "props": Object {
                 "name": "body",
                 "onChange": [Function],
+                "readOnly": undefined,
                 "rows": "10",
                 "value": "",
               },
@@ -892,6 +911,7 @@ ShallowWrapper {
               "props": Object {
                 "name": "author",
                 "onChange": [Function],
+                "readOnly": undefined,
                 "type": "text",
                 "value": "",
               },
@@ -910,6 +930,10 @@ ShallowWrapper {
   border: 1px solid #012542;
   border-radius: 4px;
   box-sizing: border-box;
+  &:read-only {
+    background: #f6f6f6;
+    color: #999999;
+  }
 ",
                   ],
                 },

@@ -17,6 +17,10 @@ const Input = styled.input`
   border: 1px solid #012542;
   border-radius: 4px;
   box-sizing: border-box;
+  &:read-only {
+    background: #f6f6f6;
+    color: #999999;
+  }
 `;
 Input.displayName = "Input";
 
@@ -32,7 +36,7 @@ Textarea.displayName = "Textarea";
 const FormSelect = styled(Select)`
   width: 70%;
   box-sizing: border-box;
-  font-size: 16px;
+  font-size: 12px;
   &:focus {
     outline: none;
   }
@@ -73,9 +77,17 @@ class Form extends React.Component {
     body: ""
   };
 
+  componentDidMount = () => {
+    if (this.props.post) {
+      const { post, categories } = this.props;
+      const { title, author, category, body } = post;
+      const selectedCategory = categories.find(c => c.value === category);
+      this.setState({ title, author, category: selectedCategory, body });
+    }
+  };
+
   handleSubmit = event => {
     event.preventDefault();
-
     const {
       title,
       author,
@@ -92,14 +104,15 @@ class Form extends React.Component {
     this.setState({ [name]: value });
   };
 
-  handleOnSelect = category => {
-    this.setState({ category });
-  };
+  handleOnSelect = category => this.setState({ category });
 
-  isDisabled = () => {
+  isButtonDisabled = () => {
     const { title, author, category, body } = this.state;
     return !(title !== "" && author !== "" && body !== "" && category !== null);
   };
+
+  isFieldDisabled = name =>
+    this.props.disabledFields && this.props.disabledFields.includes(name);
 
   render() {
     return (
@@ -111,6 +124,7 @@ class Form extends React.Component {
             name="title"
             onChange={this.handleOnChange}
             value={this.state.title}
+            readOnly={this.isFieldDisabled("title")}
           />
         </Label>
         <Label>
@@ -121,6 +135,7 @@ class Form extends React.Component {
             onChange={this.handleOnSelect}
             searchable={false}
             value={this.state.category}
+            isDisabled={this.isFieldDisabled("category")}
           />
         </Label>
         <Label>
@@ -130,6 +145,7 @@ class Form extends React.Component {
             name="body"
             onChange={this.handleOnChange}
             value={this.state.body}
+            readOnly={this.isFieldDisabled("body")}
           />
         </Label>
         <Label>
@@ -139,9 +155,10 @@ class Form extends React.Component {
             name="author"
             onChange={this.handleOnChange}
             value={this.state.author}
+            readOnly={this.isFieldDisabled("author")}
           />
         </Label>
-        <Button disabled={this.isDisabled()}>Send</Button>
+        <Button disabled={this.isButtonDisabled()}>Send</Button>
       </FormContainer>
     );
   }
@@ -149,7 +166,8 @@ class Form extends React.Component {
 
 Form.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  categories: PropTypes.array.isRequired
+  categories: PropTypes.array.isRequired,
+  post: PropTypes.object
 };
 
 export default Form;
