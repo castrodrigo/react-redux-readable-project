@@ -5,6 +5,17 @@ import { Link, withRouter } from "react-router-dom";
 import { FaComments, FaEdit, FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 import { formatTimestamp } from "../../util/date";
 
+const Item = styled(Link)`
+  &,
+  &:visited {
+    color: #001936;
+    text-decoration: none;
+  }
+  &:hover {
+    color: #840032;
+  }
+`;
+
 const DataWrapper = styled.div`
   display: flex;
   border: 1px solid #d1ccce;
@@ -61,16 +72,14 @@ const DetailSection = styled.section`
   & button {
     font-weight: bold;
   }
-  & button {
+  & a {
     color: #001936;
-    border: 0;
-    padding: 0;
-    cursor: pointer;
+    font-weight: bold;
   }
 `;
 
 const Control = styled.div`
-  & > button {
+  & > a {
     font-size: 18px;
   }
 `;
@@ -87,16 +96,6 @@ const CommentSection = styled.section`
   justify-content: space-between;
 `;
 
-const redirectToCategory = (e, category, props) => {
-  e.preventDefault();
-  props.history.push(`/${category}`);
-};
-
-const redirectToEdit = (e, id, props) => {
-  e.preventDefault();
-  props.history.push(`/edit/${id}`);
-};
-
 const Post = ({
   post: {
     id,
@@ -110,43 +109,41 @@ const Post = ({
   },
   ...props
 }) => (
-  <Link to={`/${category}/${id}`}>
-    <DataWrapper>
-      <PostWrapper>
+  <DataWrapper>
+    <PostWrapper>
+      <Item to={`/${category}/${id}`}>
         <Title>{title}</Title>
-        <DetailSection>
-          <section>
-            Published in <span>{formatTimestamp(timestamp)}</span> by{" "}
-            <span>{author}</span>, in{" "}
-            <button onClick={e => redirectToCategory(e, category, props)}>
-              {category}
-            </button>
-          </section>
-          <Control>
-            <button onClick={e => redirectToEdit(e, id, props)}>
-              <FaEdit />
-            </button>
-          </Control>
-        </DetailSection>
-        <ContentWrapper>{body}</ContentWrapper>
-        <CommentSection>
+      </Item>
+      <DetailSection>
+        <section>
+          Published in <span>{formatTimestamp(timestamp)}</span> by{" "}
+          <span>{author}</span>, in <Item to={`/${category}`}>{category}</Item>
+        </section>
+        <Control>
+          <Item to={`/edit/${id}`}>
+            <FaEdit />
+          </Item>
+        </Control>
+      </DetailSection>
+      <ContentWrapper>{body}</ContentWrapper>
+      <CommentSection>
+        <Item to={`/${category}/${id}`}>
           <span>
             <FaComments /> ({commentCount})
           </span>
-          <span>score: {voteScore}</span>
-        </CommentSection>
-      </PostWrapper>
-      <VoteWrapper>
-        <button>
-          <FaThumbsUp />
-        </button>
-        <span>{voteScore}</span>
-        <button>
-          <FaThumbsDown />
-        </button>
-      </VoteWrapper>
-    </DataWrapper>
-  </Link>
+        </Item>
+      </CommentSection>
+    </PostWrapper>
+    <VoteWrapper>
+      <button onClick={props.voteUp}>
+        <FaThumbsUp />
+      </button>
+      <span>{voteScore}</span>
+      <button onClick={props.voteDown}>
+        <FaThumbsDown />
+      </button>
+    </VoteWrapper>
+  </DataWrapper>
 );
 
 Post.propTypes = {
@@ -160,9 +157,8 @@ Post.propTypes = {
     commentCount: PropTypes.number.isRequired,
     voteScore: PropTypes.number.isRequired
   }).isRequired,
-  history: PropTypes.shape({
-    history: PropTypes.shape.isRequired
-  }).isRequired
+  voteUp: PropTypes.func.isRequired,
+  voteDown: PropTypes.func.isRequired
 };
 
 export default withRouter(Post);
