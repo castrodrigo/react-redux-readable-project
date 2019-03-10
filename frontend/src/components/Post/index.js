@@ -2,7 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Link, withRouter } from "react-router-dom";
-import { FaComments, FaEdit, FaThumbsUp, FaThumbsDown } from "react-icons/fa";
+import {
+  FaComments,
+  FaEdit,
+  FaEraser,
+  FaThumbsUp,
+  FaThumbsDown
+} from "react-icons/fa";
 import { formatTimestamp } from "../../util/date";
 
 const Item = styled(Link)`
@@ -78,12 +84,6 @@ const DetailSection = styled.section`
   }
 `;
 
-const Control = styled.div`
-  & > a {
-    font-size: 18px;
-  }
-`;
-
 const ContentWrapper = styled.div`
   margin: 20px 0;
 `;
@@ -94,6 +94,23 @@ const CommentSection = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-between;
+`;
+
+const Control = styled.div`
+  & > a {
+    font-size: 16px;
+    margin-right: 6px;
+  }
+  & > button {
+    font-size: 16px;
+    padding: 0;
+    background: 0;
+    border: 0;
+    cursor: pointer;
+  }
+  & > button:hover {
+    color: #840032;
+  }
 `;
 
 const Post = ({
@@ -119,19 +136,22 @@ const Post = ({
           Published in <span>{formatTimestamp(timestamp)}</span> by{" "}
           <span>{author}</span>, in <Item to={`/${category}`}>{category}</Item>
         </section>
-        <Control>
-          <Item to={`/edit/${id}`}>
-            <FaEdit />
-          </Item>
-        </Control>
       </DetailSection>
       <ContentWrapper>{body}</ContentWrapper>
       <CommentSection>
-        <Item to={`/${category}/${id}`}>
+        <Item to={`/${category}/${id}`} title={`${commentCount} Comments`}>
           <span>
             <FaComments /> ({commentCount})
           </span>
         </Item>
+        <Control>
+          <Item to={`/edit/${id}`} title={`Edit Post`}>
+            <FaEdit />
+          </Item>
+          <button title={`Delete Post`}>
+            <FaEraser />
+          </button>
+        </Control>
       </CommentSection>
     </PostWrapper>
     <VoteWrapper>
