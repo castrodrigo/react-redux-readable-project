@@ -9,6 +9,9 @@ export const UPDATE_COMMENT = "UPDATE_COMMENT";
 export const VOTE_COMMENT = "VOTE_COMMENT";
 export const REMOVE_COMMENT = "REMOVE_COMMENT";
 
+export const UPVOTE = "upVote";
+export const DOWNVOTE = "downVote";
+
 export const getComments = (comments, postId) => ({
   type: GET_COMMENTS,
   postId,
@@ -31,5 +34,19 @@ export const handleAddComment = (comment, postId) => dispatch => {
       parentId: postId
     })
     .then(comment => dispatch(addComment(comment)))
+    .then(() => dispatch(hideLoading()));
+};
+
+const voteComment = comment => ({
+  type: VOTE_COMMENT,
+  comment
+});
+
+export const handleVoteComment = (id, vote) => dispatch => {
+  dispatch(showLoading());
+
+  return api
+    .voteComment(id, vote)
+    .then(comment => dispatch(voteComment(comment)))
     .then(() => dispatch(hideLoading()));
 };
