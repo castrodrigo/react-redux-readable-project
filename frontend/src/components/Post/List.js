@@ -26,7 +26,7 @@ const List = ({ title, postIds }) => (
 
 List.propTypes = {
   title: PropTypes.string.isRequired,
-  postIds: PropTypes.array.isRequired
+  postIds: PropTypes.array
 };
 
 export default List;

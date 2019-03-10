@@ -3,13 +3,13 @@ import { GET_CATEGORIES } from "../actions/categories";
 export default (state = {}, action) => {
   switch (action.type) {
     case GET_CATEGORIES:
-      const categoryObject = {};
+      const categoriesObject = {};
       action.categories.map(
-        category => (categoryObject[category.path] = category)
+        category => (categoriesObject[category.path] = category)
       );
       return {
         ...state,
-        ...categoryObject
+        ...categoriesObject
       };
     default:
       return state;

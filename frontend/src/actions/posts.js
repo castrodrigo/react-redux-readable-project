@@ -31,3 +31,21 @@ export const handleAddPost = data => dispatch => {
     .then(post => dispatch(addPost(post)))
     .then(() => dispatch(hideLoading()));
 };
+
+const updatePost = post => ({
+  type: UPDATE_POST,
+  post
+});
+
+export const handleUpdatePost = (id, { title, body }) => dispatch => {
+  console.log(id, title, body);
+  dispatch(showLoading());
+
+  return api
+    .updatePost(id, {
+      title,
+      body
+    })
+    .then(post => dispatch(updatePost(post)))
+    .then(() => dispatch(hideLoading()));
+};

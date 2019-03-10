@@ -7,8 +7,8 @@ export const handleInitialData = () => dispatch => {
   dispatch(showLoading());
   return Promise.all([api.getPosts(), api.getCategories()]).then(
     ([posts, categories]) => {
-      dispatch(getPosts(posts));
       dispatch(getCategories(categories));
+      dispatch(getPosts(posts));
       dispatch(hideLoading());
     }
   );

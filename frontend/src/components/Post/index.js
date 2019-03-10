@@ -1,9 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-
 import styled from "styled-components";
 import { Link, withRouter } from "react-router-dom";
-import { FaComments } from "react-icons/fa";
+import { FaComments, FaEdit } from "react-icons/fa";
 import { formatTimestamp } from "../../util/date";
 
 const PostWrapper = styled.div`
@@ -19,15 +18,23 @@ const Title = styled.h2`
 const DetailSection = styled.section`
   font-size: 0.75em;
   color: #8e8b8c;
-  > span,
-  > button {
+  display: flex;
+  justify-content: space-between;
+  & span,
+  & button {
     font-weight: bold;
   }
-  > button {
+  & button {
     color: #001936;
     border: 0;
     padding: 0;
     cursor: pointer;
+  }
+`;
+
+const Control = styled.div`
+  & > button {
+    font-size: 18px;
   }
 `;
 
@@ -48,6 +55,11 @@ const redirectToCategory = (e, category, props) => {
   props.history.push(`/${category}`);
 };
 
+const redirectToEdit = (e, id, props) => {
+  e.preventDefault();
+  props.history.push(`/edit/${id}`);
+};
+
 const Post = ({
   post: {
     id,
@@ -65,11 +77,18 @@ const Post = ({
     <PostWrapper>
       <Title>{title}</Title>
       <DetailSection>
-        Published in <span>{formatTimestamp(timestamp)}</span> by{" "}
-        <span>{author}</span>, in{" "}
-        <button onClick={e => redirectToCategory(e, category, props)}>
-          {category}
-        </button>
+        <section>
+          Published in <span>{formatTimestamp(timestamp)}</span> by{" "}
+          <span>{author}</span>, in{" "}
+          <button onClick={e => redirectToCategory(e, category, props)}>
+            {category}
+          </button>
+        </section>
+        <Control>
+          <button onClick={e => redirectToEdit(e, id, props)}>
+            <FaEdit />
+          </button>
+        </Control>
       </DetailSection>
       <ContentWrapper>{body}</ContentWrapper>
       <CommentSection>
