@@ -11,12 +11,15 @@ const List = ({ title, commentIds, postId }) => (
   <div>
     <h3>{title}</h3>
     <ul>
-      {commentIds &&
+      {commentIds.length > 0 ? (
         commentIds.map(id => (
           <ListItem key={id}>
             <Comment id={id} postId={postId} />
           </ListItem>
-        ))}
+        ))
+      ) : (
+        <ListItem>No comments yet</ListItem>
+      )}
     </ul>
   </div>
 );
