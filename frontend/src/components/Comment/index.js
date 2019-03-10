@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import { formatTimestamp } from "../../util/date";
 
 const CommentWrapper = styled.div`
   background: #d1ccce;
@@ -29,7 +30,8 @@ const ContentWrapper = styled.div`
 const Comment = ({ comment: { timestamp, body, author, voteScore } }) => (
   <CommentWrapper>
     <DetailSection>
-      Commented in <span>{timestamp}</span> by <span>{author}</span>
+      Commented in <span>{formatTimestamp(timestamp)}</span> by{" "}
+      <span>{author}</span>
     </DetailSection>
     <ContentWrapper>{body}</ContentWrapper>
     <section>score: {voteScore}</section>

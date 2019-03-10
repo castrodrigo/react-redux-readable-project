@@ -9,7 +9,7 @@ const ListItem = styled.li`
 
 const List = ({ title, commentIds, postId }) => (
   <div>
-    <h2>{title}</h2>
+    <h3>{title}</h3>
     <ul>
       {commentIds &&
         commentIds.map(id => (
