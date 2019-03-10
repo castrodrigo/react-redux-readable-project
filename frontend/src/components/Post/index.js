@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Link, withRouter } from "react-router-dom";
+import { confirmAlert } from "react-confirm-alert";
+import { formatTimestamp } from "../../util/date";
 import {
   FaComments,
   FaEdit,
@@ -9,7 +11,7 @@ import {
   FaThumbsUp,
   FaThumbsDown
 } from "react-icons/fa";
-import { formatTimestamp } from "../../util/date";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 const Item = styled(Link)`
   &,
@@ -113,58 +115,77 @@ const Control = styled.div`
   }
 `;
 
-const Post = ({
-  post: {
-    id,
-    title,
-    timestamp,
-    author,
-    body,
-    category,
-    commentCount,
-    voteScore
-  },
-  ...props
-}) => (
-  <DataWrapper>
-    <PostWrapper>
-      <Item to={`/${category}/${id}`}>
-        <Title>{title}</Title>
-      </Item>
-      <DetailSection>
-        <section>
-          Published in <span>{formatTimestamp(timestamp)}</span> by{" "}
-          <span>{author}</span>, in <Item to={`/${category}`}>{category}</Item>
-        </section>
-      </DetailSection>
-      <ContentWrapper>{body}</ContentWrapper>
-      <CommentSection>
-        <Item to={`/${category}/${id}`} title={`${commentCount} Comments`}>
-          <span>
-            <FaComments /> ({commentCount})
-          </span>
-        </Item>
-        <Control>
-          <Item to={`/edit/${id}`} title={`Edit Post`}>
-            <FaEdit />
+class Post extends React.Component {
+  handleOnDelete = () =>
+    confirmAlert({
+      title: "Confirm post removal",
+      message: "Are you sure that you want to remove this post?",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: () => this.props.removePost()
+        },
+        { label: "No" }
+      ]
+    });
+
+  render() {
+    if (!this.props.post) {
+      return null;
+    }
+    const {
+      id,
+      title,
+      timestamp,
+      author,
+      body,
+      category,
+      commentCount,
+      voteScore
+    } = this.props.post;
+    return (
+      <DataWrapper>
+        <PostWrapper>
+          <Item to={`/${category}/${id}`}>
+            <Title>{title}</Title>
           </Item>
-          <button title={`Delete Post`}>
-            <FaEraser />
+          <DetailSection>
+            <section>
+              Published in <span>{formatTimestamp(timestamp)}</span> by{" "}
+              <span>{author}</span>, in{" "}
+              <Item to={`/${category}`}>{category}</Item>
+            </section>
+          </DetailSection>
+          <ContentWrapper>{body}</ContentWrapper>
+          <CommentSection>
+            <Item to={`/${category}/${id}`} title={`${commentCount} Comments`}>
+              <span>
+                <FaComments /> ({commentCount})
+              </span>
+            </Item>
+            <Control>
+              <Item to={`/edit/${id}`} title={`Edit Post`}>
+                <FaEdit />
+              </Item>
+              <button title={`Delete Post`} onClick={this.handleOnDelete}>
+                <FaEraser />
+              </button>
+            </Control>
+          </CommentSection>
+        </PostWrapper>
+        <VoteWrapper>
+          <button onClick={this.props.voteUp}>
+            <FaThumbsUp />
           </button>
-        </Control>
-      </CommentSection>
-    </PostWrapper>
-    <VoteWrapper>
-      <button onClick={props.voteUp}>
-        <FaThumbsUp />
-      </button>
-      <span>{voteScore}</span>
-      <button onClick={props.voteDown}>
-        <FaThumbsDown />
-      </button>
-    </VoteWrapper>
-  </DataWrapper>
-);
+          <span>{voteScore}</span>
+          <button onClick={this.props.voteDown}>
+            <FaThumbsDown />
+          </button>
+        </VoteWrapper>
+      </DataWrapper>
+    );
+  }
+}
 
 Post.propTypes = {
   post: PropTypes.shape({
@@ -176,7 +197,7 @@ Post.propTypes = {
     category: PropTypes.string.isRequired,
     commentCount: PropTypes.number.isRequired,
     voteScore: PropTypes.number.isRequired
-  }).isRequired,
+  }),
   voteUp: PropTypes.func.isRequired,
   voteDown: PropTypes.func.isRequired
 };

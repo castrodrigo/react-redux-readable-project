@@ -8,9 +8,8 @@ const Page = ({ postId, commentIds }) => (
   <Layout
     content={
       <React.Fragment>
-        {<Post id={postId} /> && (
-          <CommentList commentIds={commentIds} postId={postId} />
-        )}
+        <Post id={postId} />
+        <CommentList commentIds={commentIds} postId={postId} />
       </React.Fragment>
     }
   />
