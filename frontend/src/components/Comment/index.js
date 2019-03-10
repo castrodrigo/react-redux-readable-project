@@ -2,11 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { formatTimestamp } from "../../util/date";
+import Vote from "../Vote";
 
 const CommentWrapper = styled.div`
   background: #d1ccce;
   padding: 0.75em;
   color: #001936;
+  width: 90%;
 `;
 
 const DetailSection = styled.section`
@@ -27,15 +29,26 @@ const ContentWrapper = styled.div`
   margin: 20px 0;
 `;
 
-const Comment = ({ comment: { timestamp, body, author, voteScore } }) => (
-  <CommentWrapper>
-    <DetailSection>
-      Commented in <span>{formatTimestamp(timestamp)}</span> by{" "}
-      <span>{author}</span>
-    </DetailSection>
-    <ContentWrapper>{body}</ContentWrapper>
-    <section>score: {voteScore}</section>
-  </CommentWrapper>
+const DataWrapper = styled.div`
+  display: flex;
+  border: 1px solid #d1ccce;
+`;
+
+const Comment = ({
+  comment: { timestamp, body, author, voteScore },
+  voteUp,
+  voteDown
+}) => (
+  <DataWrapper>
+    <CommentWrapper>
+      <DetailSection>
+        Commented in <span>{formatTimestamp(timestamp)}</span> by{" "}
+        <span>{author}</span>
+      </DetailSection>
+      <ContentWrapper>{body}</ContentWrapper>
+    </CommentWrapper>
+    <Vote score={voteScore} voteUp={voteUp} voteDown={voteDown} />
+  </DataWrapper>
 );
 
 Comment.propTypes = {
@@ -44,7 +57,9 @@ Comment.propTypes = {
     body: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
     voteScore: PropTypes.number.isRequired
-  }).isRequired
+  }).isRequired,
+  voteUp: PropTypes.func.isRequired,
+  voteDown: PropTypes.func.isRequired
 };
 
 export default Comment;

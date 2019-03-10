@@ -1,4 +1,4 @@
-import { GET_COMMENTS, ADD_COMMENT } from "../actions/comments";
+import { GET_COMMENTS, ADD_COMMENT, VOTE_COMMENT } from "../actions/comments";
 
 export default (state = {}, action) => {
   switch (action.type) {
@@ -12,6 +12,7 @@ export default (state = {}, action) => {
           ...commentsObject
         }
       };
+    case VOTE_COMMENT:
     case ADD_COMMENT:
       const { comment } = action;
       return {
