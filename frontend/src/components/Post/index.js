@@ -2,13 +2,61 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Link, withRouter } from "react-router-dom";
-import { FaComments, FaEdit } from "react-icons/fa";
+import { FaComments, FaEdit, FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 import { formatTimestamp } from "../../util/date";
 
-const PostWrapper = styled.div`
+const Item = styled(Link)`
+  &,
+  &:visited {
+    color: #001936;
+    text-decoration: none;
+  }
+  &:hover {
+    color: #840032;
+  }
+`;
+
+const DataWrapper = styled.div`
+  display: flex;
   border: 1px solid #d1ccce;
+`;
+
+const VoteWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 10%;
+  background: #d1ccce;
+  justify-content: space-evenly;
+  text-align: center;
+  box-size: border-box;
+  padding: 0.5em;
+  border-left: 1px solid #d1ccce;
+  & button {
+    font-size: 18px;
+    padding: 0px;
+    background: none;
+    border: 0;
+    cursor: pointer;
+  }
+  & button:first-child {
+    color: #007544;
+  }
+  & button:last-child {
+    margin-top: 4px;
+    color: #750000;
+  }
+  & span {
+    background: white;
+    padding: 4px;
+    display: block;
+    color: #840032;
+  }
+`;
+
+const PostWrapper = styled.div`
   padding: 0.75em;
   color: #001936;
+  width: 90%;
 `;
 
 const Title = styled.h2`
@@ -24,16 +72,14 @@ const DetailSection = styled.section`
   & button {
     font-weight: bold;
   }
-  & button {
+  & a {
     color: #001936;
-    border: 0;
-    padding: 0;
-    cursor: pointer;
+    font-weight: bold;
   }
 `;
 
 const Control = styled.div`
-  & > button {
+  & > a {
     font-size: 18px;
   }
 `;
@@ -50,16 +96,6 @@ const CommentSection = styled.section`
   justify-content: space-between;
 `;
 
-const redirectToCategory = (e, category, props) => {
-  e.preventDefault();
-  props.history.push(`/${category}`);
-};
-
-const redirectToEdit = (e, id, props) => {
-  e.preventDefault();
-  props.history.push(`/edit/${id}`);
-};
-
 const Post = ({
   post: {
     id,
@@ -73,32 +109,41 @@ const Post = ({
   },
   ...props
 }) => (
-  <Link to={`/${category}/${id}`}>
+  <DataWrapper>
     <PostWrapper>
-      <Title>{title}</Title>
+      <Item to={`/${category}/${id}`}>
+        <Title>{title}</Title>
+      </Item>
       <DetailSection>
         <section>
           Published in <span>{formatTimestamp(timestamp)}</span> by{" "}
-          <span>{author}</span>, in{" "}
-          <button onClick={e => redirectToCategory(e, category, props)}>
-            {category}
-          </button>
+          <span>{author}</span>, in <Item to={`/${category}`}>{category}</Item>
         </section>
         <Control>
-          <button onClick={e => redirectToEdit(e, id, props)}>
+          <Item to={`/edit/${id}`}>
             <FaEdit />
-          </button>
+          </Item>
         </Control>
       </DetailSection>
       <ContentWrapper>{body}</ContentWrapper>
       <CommentSection>
-        <span>
-          <FaComments /> ({commentCount})
-        </span>
-        <span>score: {voteScore}</span>
+        <Item to={`/${category}/${id}`}>
+          <span>
+            <FaComments /> ({commentCount})
+          </span>
+        </Item>
       </CommentSection>
     </PostWrapper>
-  </Link>
+    <VoteWrapper>
+      <button onClick={props.voteUp}>
+        <FaThumbsUp />
+      </button>
+      <span>{voteScore}</span>
+      <button onClick={props.voteDown}>
+        <FaThumbsDown />
+      </button>
+    </VoteWrapper>
+  </DataWrapper>
 );
 
 Post.propTypes = {
@@ -112,9 +157,8 @@ Post.propTypes = {
     commentCount: PropTypes.number.isRequired,
     voteScore: PropTypes.number.isRequired
   }).isRequired,
-  history: PropTypes.shape({
-    history: PropTypes.shape.isRequired
-  }).isRequired
+  voteUp: PropTypes.func.isRequired,
+  voteDown: PropTypes.func.isRequired
 };
 
 export default withRouter(Post);

@@ -1,4 +1,4 @@
-import { GET_POSTS, ADD_POST, UPDATE_POST } from "../actions/posts";
+import { GET_POSTS, ADD_POST, UPDATE_POST, VOTE_POST } from "../actions/posts";
 
 export default (state = {}, action) => {
   const { post } = action;
@@ -12,6 +12,7 @@ export default (state = {}, action) => {
       };
     case ADD_POST:
     case UPDATE_POST:
+    case VOTE_POST:
       return {
         ...state,
         [post.id]: post
