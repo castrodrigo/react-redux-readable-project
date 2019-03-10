@@ -34,7 +34,11 @@ const DataWrapper = styled.div`
   border: 1px solid #d1ccce;
 `;
 
-const Comment = ({ comment: { timestamp, body, author, voteScore } }) => (
+const Comment = ({
+  comment: { timestamp, body, author, voteScore },
+  voteUp,
+  voteDown
+}) => (
   <DataWrapper>
     <CommentWrapper>
       <DetailSection>
@@ -43,7 +47,7 @@ const Comment = ({ comment: { timestamp, body, author, voteScore } }) => (
       </DetailSection>
       <ContentWrapper>{body}</ContentWrapper>
     </CommentWrapper>
-    <Vote score={voteScore} />
+    <Vote score={voteScore} voteUp={voteUp} voteDown={voteDown} />
   </DataWrapper>
 );
 
@@ -53,7 +57,9 @@ Comment.propTypes = {
     body: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
     voteScore: PropTypes.number.isRequired
-  }).isRequired
+  }).isRequired,
+  voteUp: PropTypes.func.isRequired,
+  voteDown: PropTypes.func.isRequired
 };
 
 export default Comment;

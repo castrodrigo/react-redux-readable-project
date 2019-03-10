@@ -50,7 +50,7 @@ const Vote = ({ score, voteUp, voteDown }) => (
 Vote.propTypes = {
   score: PropTypes.number.isRequired,
   voteUp: PropTypes.func.isRequired,
-  voteDow: PropTypes.func.isRequired
+  voteDown: PropTypes.func.isRequired
 };
 
 export default Vote;
