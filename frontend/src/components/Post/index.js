@@ -4,13 +4,8 @@ import styled from "styled-components";
 import { Link, withRouter } from "react-router-dom";
 import { confirmAlert } from "react-confirm-alert";
 import { formatTimestamp } from "../../util/date";
-import {
-  FaComments,
-  FaEdit,
-  FaEraser,
-  FaThumbsUp,
-  FaThumbsDown
-} from "react-icons/fa";
+import { FaComments, FaEdit, FaEraser } from "react-icons/fa";
+import Vote from "../Vote";
 import "react-confirm-alert/src/react-confirm-alert.css";
 
 const Item = styled(Link)`
@@ -27,38 +22,6 @@ const Item = styled(Link)`
 const DataWrapper = styled.div`
   display: flex;
   border: 1px solid #d1ccce;
-`;
-
-const VoteWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 10%;
-  background: #d1ccce;
-  justify-content: space-evenly;
-  text-align: center;
-  box-size: border-box;
-  padding: 0.5em;
-  border-left: 1px solid #d1ccce;
-  & button {
-    font-size: 18px;
-    padding: 0px;
-    background: none;
-    border: 0;
-    cursor: pointer;
-  }
-  & button:first-child {
-    color: #007544;
-  }
-  & button:last-child {
-    margin-top: 4px;
-    color: #750000;
-  }
-  & span {
-    background: white;
-    padding: 4px;
-    display: block;
-    color: #840032;
-  }
 `;
 
 const PostWrapper = styled.div`
@@ -173,15 +136,11 @@ class Post extends React.Component {
             </Control>
           </CommentSection>
         </PostWrapper>
-        <VoteWrapper>
-          <button onClick={this.props.voteUp}>
-            <FaThumbsUp />
-          </button>
-          <span>{voteScore}</span>
-          <button onClick={this.props.voteDown}>
-            <FaThumbsDown />
-          </button>
-        </VoteWrapper>
+        <Vote
+          score={voteScore}
+          voteUp={this.props.voteUp}
+          voteDown={this.props.voteDown}
+        />
       </DataWrapper>
     );
   }
