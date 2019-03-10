@@ -2,8 +2,16 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Link, withRouter } from "react-router-dom";
-import { FaComments, FaEdit, FaThumbsUp, FaThumbsDown } from "react-icons/fa";
+import { confirmAlert } from "react-confirm-alert";
 import { formatTimestamp } from "../../util/date";
+import {
+  FaComments,
+  FaEdit,
+  FaEraser,
+  FaThumbsUp,
+  FaThumbsDown
+} from "react-icons/fa";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 const Item = styled(Link)`
   &,
@@ -78,12 +86,6 @@ const DetailSection = styled.section`
   }
 `;
 
-const Control = styled.div`
-  & > a {
-    font-size: 18px;
-  }
-`;
-
 const ContentWrapper = styled.div`
   margin: 20px 0;
 `;
@@ -96,55 +98,94 @@ const CommentSection = styled.section`
   justify-content: space-between;
 `;
 
-const Post = ({
-  post: {
-    id,
-    title,
-    timestamp,
-    author,
-    body,
-    category,
-    commentCount,
-    voteScore
-  },
-  ...props
-}) => (
-  <DataWrapper>
-    <PostWrapper>
-      <Item to={`/${category}/${id}`}>
-        <Title>{title}</Title>
-      </Item>
-      <DetailSection>
-        <section>
-          Published in <span>{formatTimestamp(timestamp)}</span> by{" "}
-          <span>{author}</span>, in <Item to={`/${category}`}>{category}</Item>
-        </section>
-        <Control>
-          <Item to={`/edit/${id}`}>
-            <FaEdit />
+const Control = styled.div`
+  & > a {
+    font-size: 16px;
+    margin-right: 6px;
+  }
+  & > button {
+    font-size: 16px;
+    padding: 0;
+    background: 0;
+    border: 0;
+    cursor: pointer;
+  }
+  & > button:hover {
+    color: #840032;
+  }
+`;
+
+class Post extends React.Component {
+  handleOnDelete = () =>
+    confirmAlert({
+      title: "Confirm post removal",
+      message: "Are you sure that you want to remove this post?",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: () => this.props.removePost()
+        },
+        { label: "No" }
+      ]
+    });
+
+  render() {
+    if (!this.props.post) {
+      return null;
+    }
+    const {
+      id,
+      title,
+      timestamp,
+      author,
+      body,
+      category,
+      commentCount,
+      voteScore
+    } = this.props.post;
+    return (
+      <DataWrapper>
+        <PostWrapper>
+          <Item to={`/${category}/${id}`}>
+            <Title>{title}</Title>
           </Item>
-        </Control>
-      </DetailSection>
-      <ContentWrapper>{body}</ContentWrapper>
-      <CommentSection>
-        <Item to={`/${category}/${id}`}>
-          <span>
-            <FaComments /> ({commentCount})
-          </span>
-        </Item>
-      </CommentSection>
-    </PostWrapper>
-    <VoteWrapper>
-      <button onClick={props.voteUp}>
-        <FaThumbsUp />
-      </button>
-      <span>{voteScore}</span>
-      <button onClick={props.voteDown}>
-        <FaThumbsDown />
-      </button>
-    </VoteWrapper>
-  </DataWrapper>
-);
+          <DetailSection>
+            <section>
+              Published in <span>{formatTimestamp(timestamp)}</span> by{" "}
+              <span>{author}</span>, in{" "}
+              <Item to={`/${category}`}>{category}</Item>
+            </section>
+          </DetailSection>
+          <ContentWrapper>{body}</ContentWrapper>
+          <CommentSection>
+            <Item to={`/${category}/${id}`} title={`${commentCount} Comments`}>
+              <span>
+                <FaComments /> ({commentCount})
+              </span>
+            </Item>
+            <Control>
+              <Item to={`/edit/${id}`} title={`Edit Post`}>
+                <FaEdit />
+              </Item>
+              <button title={`Delete Post`} onClick={this.handleOnDelete}>
+                <FaEraser />
+              </button>
+            </Control>
+          </CommentSection>
+        </PostWrapper>
+        <VoteWrapper>
+          <button onClick={this.props.voteUp}>
+            <FaThumbsUp />
+          </button>
+          <span>{voteScore}</span>
+          <button onClick={this.props.voteDown}>
+            <FaThumbsDown />
+          </button>
+        </VoteWrapper>
+      </DataWrapper>
+    );
+  }
+}
 
 Post.propTypes = {
   post: PropTypes.shape({
@@ -156,7 +197,7 @@ Post.propTypes = {
     category: PropTypes.string.isRequired,
     commentCount: PropTypes.number.isRequired,
     voteScore: PropTypes.number.isRequired
-  }).isRequired,
+  }),
   voteUp: PropTypes.func.isRequired,
   voteDown: PropTypes.func.isRequired
 };

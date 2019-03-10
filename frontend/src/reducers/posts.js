@@ -1,4 +1,10 @@
-import { GET_POSTS, ADD_POST, UPDATE_POST, VOTE_POST } from "../actions/posts";
+import {
+  GET_POSTS,
+  ADD_POST,
+  UPDATE_POST,
+  VOTE_POST,
+  REMOVE_POST
+} from "../actions/posts";
 
 export default (state = {}, action) => {
   const { post } = action;
@@ -16,6 +22,11 @@ export default (state = {}, action) => {
       return {
         ...state,
         [post.id]: post
+      };
+    case REMOVE_POST:
+      return {
+        ...state,
+        [action.id]: undefined
       };
     default:
       return state;

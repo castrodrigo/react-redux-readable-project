@@ -8,13 +8,19 @@ const sortPosts = (postIds, posts, order) => {
   return sortArrayObjects(postIds, posts, orderBy);
 };
 
+const filterPosts = (posts, category) => {
+  const postKeys = Object.keys(posts);
+  if (postKeys.length > 0 && category) {
+    return Object.values(posts)
+      .filter(post => post && post.category === category)
+      .map(post => post.id);
+  }
+  return postKeys;
+};
+
 const mapStateToProps = ({ posts, dashboard }, props) => {
-  const category = props.match.params.category || null;
-  const filteredPosts = category
-    ? Object.values(posts)
-        .filter(post => post.category === category)
-        .map(post => post.id)
-    : Object.keys(posts);
+  const category = props.match.params.category;
+  const filteredPosts = filterPosts(posts, category);
 
   return {
     postIds: filteredPosts,

@@ -29,8 +29,9 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = ({ posts }) => ({
-  loading: Object.entries(posts).length === 0 && posts.constructor === Object
+const mapStateToProps = ({ categories }) => ({
+  loading:
+    Object.entries(categories).length === 0 && categories.constructor === Object
 });
 
 export default connect(mapStateToProps)(App);
