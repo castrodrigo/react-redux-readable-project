@@ -9,6 +9,9 @@ export const UPDATE_POST = "UPDATE_POST";
 export const VOTE_POST = "VOTE_POST";
 export const REMOVE_POST = "REMOVE_POST";
 
+export const UPVOTE = "upVote";
+export const DOWNVOTE = "downVote";
+
 export const getPosts = posts => ({
   type: GET_POSTS,
   posts
@@ -46,5 +49,19 @@ export const handleUpdatePost = (id, { title, body }) => dispatch => {
       body
     })
     .then(post => dispatch(updatePost(post)))
+    .then(() => dispatch(hideLoading()));
+};
+
+const votePost = post => ({
+  type: VOTE_POST,
+  post
+});
+
+export const handleVotePost = (id, vote) => dispatch => {
+  dispatch(showLoading());
+
+  return api
+    .votePost(id, vote)
+    .then(post => dispatch(votePost(post)))
     .then(() => dispatch(hideLoading()));
 };
