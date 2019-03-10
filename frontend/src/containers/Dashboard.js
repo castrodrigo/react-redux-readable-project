@@ -1,10 +1,11 @@
 import { connect } from "react-redux";
 import { setOrderBy } from "../actions/dashboard";
 import Dashboard from "../components/Dashboard";
+import { sortArrayObjects } from "../util/sort";
 
 const sortPosts = (postIds, posts, order) => {
   let orderBy = order || "timestamp";
-  return postIds.sort((a, b) => posts[b][orderBy] - posts[a][orderBy]);
+  return sortArrayObjects(postIds, posts, orderBy);
 };
 
 const mapStateToProps = ({ posts, dashboard }, props) => {

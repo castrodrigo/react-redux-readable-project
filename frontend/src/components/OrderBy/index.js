@@ -16,6 +16,7 @@ const OrderBy = ({ onSelect, orderBy }) => (
     <select onChange={e => onSelect(e.target.value)} defaultValue={orderBy}>
       <option value="timestamp">Date</option>
       <option value="voteScore">Score</option>
+      <option value="author">Author</option>
     </select>
   </OrderByWrapper>
 );

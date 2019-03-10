@@ -38,7 +38,6 @@ const updatePost = post => ({
 });
 
 export const handleUpdatePost = (id, { title, body }) => dispatch => {
-  console.log(id, title, body);
   dispatch(showLoading());
 
   return api
