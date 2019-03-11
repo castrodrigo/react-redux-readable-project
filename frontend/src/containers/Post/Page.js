@@ -15,7 +15,11 @@ class PageContainer extends React.Component {
 
   render() {
     return (
-      <PostPage postId={this.props.postId} commentIds={this.props.commentIds} />
+      <PostPage
+        post={this.props.post}
+        postId={this.props.postId}
+        commentIds={this.props.commentIds}
+      />
     );
   }
 }
@@ -32,9 +36,10 @@ const filterComments = (comments, postId) => {
   return [];
 };
 
-const mapStateToProps = ({ comments }, props) => {
+const mapStateToProps = ({ posts, comments }, props) => {
   const { id } = props.match.params;
   return {
+    post: posts[id] || null,
     postId: id,
     commentIds: filterComments(comments, id)
   };
