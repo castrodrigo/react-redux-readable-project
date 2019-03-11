@@ -1,4 +1,9 @@
-import { GET_COMMENTS, ADD_COMMENT, VOTE_COMMENT } from "../actions/comments";
+import {
+  GET_COMMENTS,
+  ADD_COMMENT,
+  VOTE_COMMENT,
+  REMOVE_COMMENT
+} from "../actions/comments";
 
 export default (state = {}, action) => {
   switch (action.type) {
@@ -20,6 +25,15 @@ export default (state = {}, action) => {
         [comment.parentId]: {
           ...state[comment.parentId],
           [comment.id]: comment
+        }
+      };
+    case REMOVE_COMMENT:
+      const { id, postId } = action;
+      return {
+        ...state,
+        [postId]: {
+          ...state[postId],
+          [id]: undefined
         }
       };
     default:

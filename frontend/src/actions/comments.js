@@ -50,3 +50,18 @@ export const handleVoteComment = (id, vote) => dispatch => {
     .then(comment => dispatch(voteComment(comment)))
     .then(() => dispatch(hideLoading()));
 };
+
+const removeComment = (id, postId) => ({
+  type: REMOVE_COMMENT,
+  id,
+  postId
+});
+
+export const handleRemoveComment = (id, postId) => dispatch => {
+  dispatch(showLoading());
+
+  return api
+    .removeComment(id)
+    .then(() => dispatch(removeComment(id, postId)))
+    .then(() => dispatch(hideLoading()));
+};
