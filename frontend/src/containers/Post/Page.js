@@ -23,7 +23,10 @@ class PageContainer extends React.Component {
 const filterComments = (comments, postId) => {
   if (comments[postId]) {
     return Object.keys(comments[postId]).sort(
-      (a, b) => comments[postId][b].timestamp - comments[postId][a].timestamp
+      (a, b) =>
+        comments[postId][a] &&
+        comments[postId][b] &&
+        comments[postId][b].timestamp - comments[postId][a].timestamp
     );
   }
   return [];
