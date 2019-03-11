@@ -24,7 +24,7 @@ const List = ({ title, postIds }) => (
         ))
       ) : (
         <p>
-          No posts yet! What about creating a <Link to="/new">new post</Link>!
+          No posts yet! What about creating a <Link to="/new">new post</Link>?
         </p>
       )}
     </ul>
