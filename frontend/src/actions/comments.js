@@ -18,6 +18,15 @@ export const getComments = (comments, postId) => ({
   comments
 });
 
+export const handleGetComments = postId => dispatch => {
+  dispatch(showLoading());
+
+  return api
+    .getComments(postId)
+    .then(comments => dispatch(getComments(comments, postId)))
+    .then(() => dispatch(hideLoading()));
+};
+
 const addComment = comment => ({
   type: ADD_COMMENT,
   comment

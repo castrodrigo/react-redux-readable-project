@@ -24,7 +24,7 @@ Since there is no strong authentication, the application focuses in a moderator 
 ```
 - Edit a post
 - Remove a post
-- Edit a comment `todo`
+- Edit a comment
 - Remove a comment
 ```
 
@@ -136,4 +136,3 @@ The API/Mock-serve used in this project was provided by Udacity and lies in `api
 - Reduce Class Components as Containers, moving to MergeProps
 - Increase coverage
 - Break some big and complex components into smaller ones
-- Enable edit to comments

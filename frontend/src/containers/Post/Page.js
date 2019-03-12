@@ -1,16 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import * as api from "../../api";
-import { getComments } from "../../actions/comments";
+import { handleGetComments } from "../../actions/comments";
 import PostPage from "../../components/Post/Page";
 
 class PageContainer extends React.Component {
   componentDidMount() {
-    api
-      .getComments(this.props.postId)
-      .then(comments =>
-        this.props.dispatch(getComments(comments, this.props.postId))
-      );
+    this.props.dispatch(handleGetComments(this.props.postId));
   }
 
   render() {
