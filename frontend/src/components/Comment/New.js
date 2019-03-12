@@ -61,14 +61,17 @@ class New extends React.Component {
     body: ""
   };
 
+  clearForm = () => {
+    this.setState({
+      author: "",
+      body: ""
+    });
+  };
+
   handleSubmit = event => {
     event.preventDefault();
-    const {
-      author,
-
-      body
-    } = this.state;
-    this.props.onSubmit({ author, body });
+    const { author, body } = this.state;
+    this.props.onSubmit({ author, body }).then(() => this.clearForm());
   };
 
   handleOnChange = event => {
