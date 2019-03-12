@@ -54,8 +54,16 @@ Button.displayName = "Button";
 
 class Form extends React.Component {
   state = {
+    id: null,
     author: "",
     body: ""
+  };
+
+  componentDidMount = () => {
+    if (this.props.comment) {
+      const { id, author, body } = this.props.comment;
+      this.setState({ id, author, body });
+    }
   };
 
   clearForm = () => {
@@ -67,8 +75,8 @@ class Form extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const { author, body } = this.state;
-    this.props.onSubmit({ author, body }).then(() => this.clearForm());
+    const { id, author, body } = this.state;
+    this.props.onSubmit({ author, body }).then(() => !id && this.clearForm());
   };
 
   handleOnChange = event => {
@@ -83,6 +91,9 @@ class Form extends React.Component {
     return !(author !== "" && body !== "");
   };
 
+  isFieldDisabled = name =>
+    this.props.disabledFields && this.props.disabledFields.includes(name);
+
   render() {
     return (
       <FormContainer onSubmit={this.handleSubmit}>
@@ -93,6 +104,7 @@ class Form extends React.Component {
             name="body"
             onChange={this.handleOnChange}
             value={this.state.body}
+            readOnly={this.isFieldDisabled("body")}
           />
         </Label>
         <Label>
@@ -102,6 +114,7 @@ class Form extends React.Component {
             name="author"
             onChange={this.handleOnChange}
             value={this.state.author}
+            readOnly={this.isFieldDisabled("author")}
           />
         </Label>
         <Button disabled={this.isButtonDisabled()}>Send</Button>
@@ -111,7 +124,9 @@ class Form extends React.Component {
 }
 
 Form.propTypes = {
-  onSubmit: PropTypes.func.isRequired
+  onSubmit: PropTypes.func.isRequired,
+  comment: PropTypes.object,
+  disabledFields: PropTypes.array
 };
 
 export default Form;

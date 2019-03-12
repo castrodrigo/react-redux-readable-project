@@ -81,6 +81,9 @@ class Comment extends React.Component {
       ]
     });
 
+  handleOnSubmit = data =>
+    this.props.updateComment(data).then(this.setState({ editable: false }));
+
   toggleEditForm = () =>
     this.setState(prevState => ({ editable: !prevState.editable }));
 
@@ -91,8 +94,7 @@ class Comment extends React.Component {
     const {
       comment: { timestamp, body, author, voteScore },
       voteUp,
-      voteDown,
-      updateComment
+      voteDown
     } = this.props;
     return (
       <DataWrapper>
@@ -115,7 +117,11 @@ class Comment extends React.Component {
           <Vote score={voteScore} voteUp={voteUp} voteDown={voteDown} />
         </section>
         {this.state.editable && (
-          <Form onSubmit={updateComment} comment={this.props.comment} />
+          <Form
+            onSubmit={this.handleOnSubmit}
+            comment={this.props.comment}
+            disabledFields={["author"]}
+          />
         )}
       </DataWrapper>
     );

@@ -74,6 +74,7 @@ ShallowWrapper {
             "props": Object {
               "name": "body",
               "onChange": [Function],
+              "readOnly": undefined,
               "rows": "4",
               "value": "",
             },
@@ -158,6 +159,7 @@ ShallowWrapper {
             "props": Object {
               "name": "author",
               "onChange": [Function],
+              "readOnly": undefined,
               "type": "text",
               "value": "",
             },
@@ -346,6 +348,7 @@ ShallowWrapper {
               "props": Object {
                 "name": "body",
                 "onChange": [Function],
+                "readOnly": undefined,
                 "rows": "4",
                 "value": "",
               },
@@ -430,6 +433,7 @@ ShallowWrapper {
               "props": Object {
                 "name": "author",
                 "onChange": [Function],
+                "readOnly": undefined,
                 "type": "text",
                 "value": "",
               },
