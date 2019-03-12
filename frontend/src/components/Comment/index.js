@@ -2,9 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { confirmAlert } from "react-confirm-alert";
-import { FaEraser } from "react-icons/fa";
+import { FaEdit, FaEraser } from "react-icons/fa";
 import { formatTimestamp } from "../../util/date";
 import Vote from "../Vote";
+import Form from "./Form";
 
 const CommentWrapper = styled.div`
   background: #d1ccce;
@@ -33,7 +34,12 @@ const ContentWrapper = styled.div`
 
 const DataWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   border: 1px solid #d1ccce;
+  & > section {
+    display: flex;
+    flex-basis: 100%;
+  }
 `;
 
 const Control = styled.div`
@@ -45,6 +51,7 @@ const Control = styled.div`
     margin-right: 6px;
   }
   & > button {
+    margin-left: 6px;
     font-size: 16px;
     padding: 0;
     background: 0;
@@ -57,6 +64,10 @@ const Control = styled.div`
 `;
 
 class Comment extends React.Component {
+  state = {
+    editable: false
+  };
+
   handleOnDelete = () =>
     confirmAlert({
       title: "Confirm comment removal",
@@ -70,6 +81,12 @@ class Comment extends React.Component {
       ]
     });
 
+  handleOnSubmit = data =>
+    this.props.updateComment(data).then(this.setState({ editable: false }));
+
+  toggleEditForm = () =>
+    this.setState(prevState => ({ editable: !prevState.editable }));
+
   render() {
     if (!this.props.comment) {
       return null;
@@ -81,19 +98,31 @@ class Comment extends React.Component {
     } = this.props;
     return (
       <DataWrapper>
-        <CommentWrapper>
-          <DetailSection>
-            Commented in <span>{formatTimestamp(timestamp)}</span> by{" "}
-            <span>{author}</span>
-          </DetailSection>
-          <ContentWrapper>{body}</ContentWrapper>
-          <Control>
-            <button title={`Delete Post`} onClick={this.handleOnDelete}>
-              <FaEraser />
-            </button>
-          </Control>
-        </CommentWrapper>
-        <Vote score={voteScore} voteUp={voteUp} voteDown={voteDown} />
+        <section>
+          <CommentWrapper>
+            <DetailSection>
+              Commented in <span>{formatTimestamp(timestamp)}</span> by{" "}
+              <span>{author}</span>
+            </DetailSection>
+            <ContentWrapper>{body}</ContentWrapper>
+            <Control>
+              <button onClick={this.toggleEditForm}>
+                <FaEdit />
+              </button>
+              <button title={`Delete Post`} onClick={this.handleOnDelete}>
+                <FaEraser />
+              </button>
+            </Control>
+          </CommentWrapper>
+          <Vote score={voteScore} voteUp={voteUp} voteDown={voteDown} />
+        </section>
+        {this.state.editable && (
+          <Form
+            onSubmit={this.handleOnSubmit}
+            comment={this.props.comment}
+            disabledFields={["author"]}
+          />
+        )}
       </DataWrapper>
     );
   }
@@ -108,7 +137,8 @@ Comment.propTypes = {
   }),
   voteUp: PropTypes.func.isRequired,
   voteDown: PropTypes.func.isRequired,
-  removeComment: PropTypes.func.isRequired
+  removeComment: PropTypes.func.isRequired,
+  updateComment: PropTypes.func.isRequired
 };
 
 export default Comment;

@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import {
   handleRemoveComment,
+  handleUpdateComment,
   handleVoteComment,
   UPVOTE,
   DOWNVOTE
@@ -15,6 +16,7 @@ const mapStateToProps = ({ comments }, { postId, id }) => ({
 const mapDispatchToProps = dispatch => ({
   voteUp: id => dispatch(handleVoteComment(id, UPVOTE)),
   voteDown: id => dispatch(handleVoteComment(id, DOWNVOTE)),
+  handleUpdateComment: (id, data) => dispatch(handleUpdateComment(id, data)),
   handleRemoveComment: (id, postId) =>
     dispatch(handleRemoveComment(id, postId)).then(() =>
       dispatch(handleGetPost(postId))
@@ -23,13 +25,14 @@ const mapDispatchToProps = dispatch => ({
 
 const mergeProps = (
   { comment },
-  { voteUp, voteDown, handleRemoveComment },
+  { voteUp, voteDown, handleRemoveComment, handleUpdateComment },
   { postId, id }
 ) => {
   return {
     comment,
     voteUp: () => voteUp(id),
     voteDown: () => voteDown(id),
+    updateComment: data => handleUpdateComment(id, data),
     removeComment: () => handleRemoveComment(id, postId)
   };
 };

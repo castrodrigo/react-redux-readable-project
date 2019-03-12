@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`New Render should render correctly 1`] = `
+exports[`Form Render should render correctly 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <New
+  Symbol(enzyme.__unrendered__): <Form
     onSubmit={[MockFunction]}
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -21,9 +21,6 @@ ShallowWrapper {
     "nodeType": "function",
     "props": Object {
       "children": Array [
-        <h3>
-          Add a new Comment
-        </h3>,
         <ForwardRef>
           Text:
           <ForwardRef
@@ -55,17 +52,6 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": "Add a new Comment",
-        },
-        "ref": null,
-        "rendered": "Add a new Comment",
-        "type": "h3",
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
         "nodeType": "function",
         "props": Object {
           "children": Array [
@@ -88,6 +74,7 @@ ShallowWrapper {
             "props": Object {
               "name": "body",
               "onChange": [Function],
+              "readOnly": undefined,
               "rows": "4",
               "value": "",
             },
@@ -172,6 +159,7 @@ ShallowWrapper {
             "props": Object {
               "name": "author",
               "onChange": [Function],
+              "readOnly": undefined,
               "type": "text",
               "value": "",
             },
@@ -284,9 +272,6 @@ ShallowWrapper {
         "isStatic": true,
         "rules": Array [
           "
-  margin: 20px 0;
-  max-width: 700px;
-  background: #fcf7f9;
   padding: 1em;
   display: flex;
   flex-direction: column;
@@ -310,9 +295,6 @@ ShallowWrapper {
       "nodeType": "function",
       "props": Object {
         "children": Array [
-          <h3>
-            Add a new Comment
-          </h3>,
           <ForwardRef>
             Text:
             <ForwardRef
@@ -344,17 +326,6 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": "Add a new Comment",
-          },
-          "ref": null,
-          "rendered": "Add a new Comment",
-          "type": "h3",
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
           "nodeType": "function",
           "props": Object {
             "children": Array [
@@ -377,6 +348,7 @@ ShallowWrapper {
               "props": Object {
                 "name": "body",
                 "onChange": [Function],
+                "readOnly": undefined,
                 "rows": "4",
                 "value": "",
               },
@@ -461,6 +433,7 @@ ShallowWrapper {
               "props": Object {
                 "name": "author",
                 "onChange": [Function],
+                "readOnly": undefined,
                 "type": "text",
                 "value": "",
               },
@@ -573,9 +546,6 @@ ShallowWrapper {
           "isStatic": true,
           "rules": Array [
             "
-  margin: 20px 0;
-  max-width: 700px;
-  background: #fcf7f9;
   padding: 1em;
   display: flex;
   flex-direction: column;

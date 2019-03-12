@@ -1,19 +1,19 @@
 import React from "react";
 import { shallow } from "enzyme";
-import New from "./New";
+import Form from "./Form";
 
 const props = {
   onSubmit: jest.fn()
 };
 
-describe("New", () => {
+describe("Form", () => {
   beforeEach(() => {
     props.onSubmit = jest.fn();
   });
 
   describe("Render", () => {
     it("should render correctly", () => {
-      const wrapper = shallow(<New {...props} />);
+      const wrapper = shallow(<Form {...props} />);
 
       expect(wrapper).toMatchSnapshot();
     });
@@ -21,7 +21,7 @@ describe("New", () => {
 
   describe("Operations", () => {
     it("validate if button change state after filling data", () => {
-      const wrapper = shallow(<New {...props} />);
+      const wrapper = shallow(<Form {...props} />);
 
       const tBody = wrapper.find("Textarea");
       tBody.simulate("change", {
@@ -37,7 +37,7 @@ describe("New", () => {
     });
 
     it("should change state when changing input", () => {
-      const wrapper = shallow(<New {...props} />);
+      const wrapper = shallow(<Form {...props} />);
 
       const iTitle = wrapper.find("Input").first();
       iTitle.simulate("change", {
@@ -48,7 +48,7 @@ describe("New", () => {
     });
 
     it("should change state when changing textarea", () => {
-      const wrapper = shallow(<New {...props} />);
+      const wrapper = shallow(<Form {...props} />);
 
       const tBody = wrapper.find("Textarea");
       tBody.simulate("change", {
@@ -59,7 +59,7 @@ describe("New", () => {
     });
 
     it("should clear form after submit", () => {
-      const wrapper = shallow(<New onSubmit={() => Promise.resolve()} />);
+      const wrapper = shallow(<Form onSubmit={() => Promise.resolve()} />);
 
       const iTitle = wrapper.find("Input").first();
       iTitle.simulate("change", {
