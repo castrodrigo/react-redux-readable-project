@@ -57,5 +57,26 @@ describe("New", () => {
 
       expect(wrapper.state("body")).toEqual("This Body");
     });
+
+    it("should clear form after submit", () => {
+      const wrapper = shallow(<New onSubmit={() => Promise.resolve()} />);
+
+      const iTitle = wrapper.find("Input").first();
+      iTitle.simulate("change", {
+        target: { name: "title", value: "This Title" }
+      });
+      const tBody = wrapper.find("Textarea");
+      tBody.simulate("change", {
+        target: { name: "body", value: "This Body" }
+      });
+
+      wrapper
+        .find("Button")
+        .last()
+        .simulate("click");
+
+      expect(iTitle.props().value).toEqual("");
+      expect(tBody.props().value).toEqual("");
+    });
   });
 });
