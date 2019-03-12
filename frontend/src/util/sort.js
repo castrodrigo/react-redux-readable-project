@@ -1,5 +1,5 @@
 export const sortArrayObjects = (array, object, orderBy) =>
-  array.sort((a, b) => {
+  [...array].sort((a, b) => {
     if (!object[a] || !object[b]) {
       return 0;
     }
