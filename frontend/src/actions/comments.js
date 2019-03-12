@@ -51,6 +51,23 @@ export const handleVoteComment = (id, vote) => dispatch => {
     .then(() => dispatch(hideLoading()));
 };
 
+const updateComment = comment => ({
+  type: UPDATE_COMMENT,
+  comment
+});
+
+export const handleUpdateComment = (id, { body }) => dispatch => {
+  dispatch(showLoading());
+
+  return api
+    .updateComment(id, {
+      timestamp: generateTimestamp(),
+      body
+    })
+    .then(comment => dispatch(updateComment(comment)))
+    .then(() => dispatch(hideLoading()));
+};
+
 const removeComment = (id, postId) => ({
   type: REMOVE_COMMENT,
   id,

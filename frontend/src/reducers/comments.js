@@ -1,6 +1,7 @@
 import {
   GET_COMMENTS,
   ADD_COMMENT,
+  UPDATE_COMMENT,
   VOTE_COMMENT,
   REMOVE_COMMENT
 } from "../actions/comments";
@@ -18,6 +19,7 @@ export default (state = {}, action) => {
         }
       };
     case VOTE_COMMENT:
+    case UPDATE_COMMENT:
     case ADD_COMMENT:
       const { comment } = action;
       return {
