@@ -1,0 +1,332 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`List Render Should render categories 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <List
+    categories={
+      Array [
+        "react",
+        "redux",
+        "udacity",
+      ]
+    }
+    title="Test List"
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <h3>
+          Test List
+        </h3>,
+        <ul>
+          <li>
+            <Connect(ListItem)
+              path="react"
+            />
+          </li>
+          <li>
+            <Connect(ListItem)
+              path="redux"
+            />
+          </li>
+          <li>
+            <Connect(ListItem)
+              path="udacity"
+            />
+          </li>
+        </ul>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Test List",
+        },
+        "ref": null,
+        "rendered": "Test List",
+        "type": "h3",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <li>
+              <Connect(ListItem)
+                path="react"
+              />
+            </li>,
+            <li>
+              <Connect(ListItem)
+                path="redux"
+              />
+            </li>,
+            <li>
+              <Connect(ListItem)
+                path="udacity"
+              />
+            </li>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": "react",
+            "nodeType": "host",
+            "props": Object {
+              "children": <Connect(ListItem)
+                path="react"
+              />,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "path": "react",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": "li",
+          },
+          Object {
+            "instance": null,
+            "key": "redux",
+            "nodeType": "host",
+            "props": Object {
+              "children": <Connect(ListItem)
+                path="redux"
+              />,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "path": "redux",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": "li",
+          },
+          Object {
+            "instance": null,
+            "key": "udacity",
+            "nodeType": "host",
+            "props": Object {
+              "children": <Connect(ListItem)
+                path="udacity"
+              />,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "path": "udacity",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": "li",
+          },
+        ],
+        "type": "ul",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <h3>
+            Test List
+          </h3>,
+          <ul>
+            <li>
+              <Connect(ListItem)
+                path="react"
+              />
+            </li>
+            <li>
+              <Connect(ListItem)
+                path="redux"
+              />
+            </li>
+            <li>
+              <Connect(ListItem)
+                path="udacity"
+              />
+            </li>
+          </ul>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Test List",
+          },
+          "ref": null,
+          "rendered": "Test List",
+          "type": "h3",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <li>
+                <Connect(ListItem)
+                  path="react"
+                />
+              </li>,
+              <li>
+                <Connect(ListItem)
+                  path="redux"
+                />
+              </li>,
+              <li>
+                <Connect(ListItem)
+                  path="udacity"
+                />
+              </li>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": "react",
+              "nodeType": "host",
+              "props": Object {
+                "children": <Connect(ListItem)
+                  path="react"
+                />,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "path": "react",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": "li",
+            },
+            Object {
+              "instance": null,
+              "key": "redux",
+              "nodeType": "host",
+              "props": Object {
+                "children": <Connect(ListItem)
+                  path="redux"
+                />,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "path": "redux",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": "li",
+            },
+            Object {
+              "instance": null,
+              "key": "udacity",
+              "nodeType": "host",
+              "props": Object {
+                "children": <Connect(ListItem)
+                  path="udacity"
+                />,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "path": "udacity",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": "li",
+            },
+          ],
+          "type": "ul",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    "disableLifecycleMethods": true,
+  },
+}
+`;
