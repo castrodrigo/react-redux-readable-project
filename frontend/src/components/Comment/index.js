@@ -2,30 +2,16 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { confirmAlert } from "react-confirm-alert";
-import { FaEdit, FaEraser } from "react-icons/fa";
-import { formatTimestamp } from "../../util/date";
 import Vote from "../Vote";
 import Form from "./Form";
+import Details from "./Details";
+import Controls from "./Controls";
 
 const CommentWrapper = styled.div`
   background: #d1ccce;
   padding: 0.75em;
   color: #001936;
   width: 90%;
-`;
-
-const DetailSection = styled.section`
-  font-size: 0.75em;
-  > span,
-  > button {
-    font-weight: bold;
-  }
-  > button {
-    color: #001936;
-    border: 0;
-    padding: 0;
-    cursor: pointer;
-  }
 `;
 
 const ContentWrapper = styled.div`
@@ -39,27 +25,6 @@ const DataWrapper = styled.div`
   & > section {
     display: flex;
     flex-basis: 100%;
-  }
-`;
-
-const Control = styled.div`
-  text-align: right;
-  border-top: 1px solid #ffffff;
-  padding-top: 0.75em;
-  & > a {
-    font-size: 16px;
-    margin-right: 6px;
-  }
-  & > button {
-    margin-left: 6px;
-    font-size: 16px;
-    padding: 0;
-    background: 0;
-    border: 0;
-    cursor: pointer;
-  }
-  & > button:hover {
-    color: #840032;
   }
 `;
 
@@ -100,19 +65,12 @@ class Comment extends React.Component {
       <DataWrapper>
         <section>
           <CommentWrapper>
-            <DetailSection>
-              Commented in <span>{formatTimestamp(timestamp)}</span> by{" "}
-              <span>{author}</span>
-            </DetailSection>
+            <Details timestamp={timestamp} author={author} />
             <ContentWrapper>{body}</ContentWrapper>
-            <Control>
-              <button onClick={this.toggleEditForm}>
-                <FaEdit />
-              </button>
-              <button title={`Delete Post`} onClick={this.handleOnDelete}>
-                <FaEraser />
-              </button>
-            </Control>
+            <Controls
+              onEdit={this.toggleEditForm}
+              onDelete={this.handleOnDelete}
+            />
           </CommentWrapper>
           <Vote score={voteScore} voteUp={voteUp} voteDown={voteDown} />
         </section>
