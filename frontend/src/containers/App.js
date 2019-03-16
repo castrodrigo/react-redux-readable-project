@@ -10,7 +10,7 @@ import PostEdit from "./Post/Edit";
 
 class App extends React.Component {
   componentDidMount() {
-    this.props.dispatch(handleInitialData());
+    this.props.loadInitialData();
   }
   render() {
     return this.props.loading ? (
@@ -34,4 +34,11 @@ const mapStateToProps = ({ categories }) => ({
     Object.entries(categories).length === 0 && categories.constructor === Object
 });
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => ({
+  loadInitialData: () => dispatch(handleInitialData())
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
