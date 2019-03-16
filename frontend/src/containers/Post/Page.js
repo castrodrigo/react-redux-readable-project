@@ -5,7 +5,7 @@ import PostPage from "../../components/Post/Page";
 
 class PageContainer extends React.Component {
   componentDidMount() {
-    this.props.dispatch(handleGetComments(this.props.postId));
+    this.props.loadComments(this.props.postId);
   }
 
   render() {
@@ -40,4 +40,11 @@ const mapStateToProps = ({ posts, comments }, props) => {
   };
 };
 
-export default connect(mapStateToProps)(PageContainer);
+const mpatDispatchToProps = dispatch => ({
+  loadComments: postId => dispatch(handleGetComments(postId))
+});
+
+export default connect(
+  mapStateToProps,
+  mpatDispatchToProps
+)(PageContainer);

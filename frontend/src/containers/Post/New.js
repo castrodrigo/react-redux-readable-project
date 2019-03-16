@@ -1,22 +1,7 @@
-import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { handleAddPost } from "../../actions/posts";
 import PostNew from "../../components/Post/New";
-
-class NewContainer extends React.Component {
-  submitPost = post => {
-    this.props
-      .dispatch(handleAddPost(post))
-      .then(() => this.props.history.push(`/${post.category}/`));
-  };
-
-  render() {
-    return (
-      <PostNew onSubmit={this.submitPost} categories={this.props.categories} />
-    );
-  }
-}
 
 const mapStateToProps = ({ categories }) => ({
   categories: Object.keys(categories).map(key => ({
@@ -25,4 +10,18 @@ const mapStateToProps = ({ categories }) => ({
   }))
 });
 
-export default connect(mapStateToProps)(withRouter(NewContainer));
+const mapDispatchToProps = dispatch => ({
+  submitPost: post => dispatch(handleAddPost(post))
+});
+
+const mapProps = ({ categories }, { submitPost }, { history }) => ({
+  onSubmit: post =>
+    submitPost(post).then(() => history.push(`/${post.category}/`)),
+  categories
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+  mapProps
+)(withRouter(PostNew));

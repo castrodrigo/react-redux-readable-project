@@ -30,12 +30,14 @@ const Content = styled.section`
   min-height: calc(100vh - 146px);
   padding-top: 1em;
 `;
+Content.displayName = "Content";
 
 const SidebarWrapper = styled.section`
   grid-area: right;
   background: #840032;
   padding: 1em 0.75em 0.75em;
 `;
+SidebarWrapper.displayName = "SidebarWrapper";
 
 const FooterWrapper = styled.section`
   grid-area: footer;
