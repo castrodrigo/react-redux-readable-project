@@ -1,0 +1,16 @@
+{
+  "categories": {
+    "react": {
+      "name": "react",
+      "path": "react"
+    },
+    "redux": {
+      "name": "redux",
+      "path": "redux"
+    },
+    "udacity": {
+      "name": "udacity",
+      "path": "udacity"
+    }
+  }
+}
